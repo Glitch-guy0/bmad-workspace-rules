@@ -64,6 +64,7 @@ constitutional_tensions:
     resolution: 'RESOLVED — triad holds definitions; modules keep *.repository.ts orchestration'
 output_files:
   - '/Users/prajwal/Documents/learning/bmad-documentation-builder/init.md'
+  - '_bmad-output/research/research-index.md'
 ---
 
 # Brainstorming Session — Research Consolidation
@@ -138,22 +139,22 @@ Conflicts between Appendix A and Part 4 resolve via **ADR** (`docs/decisions/`),
 
 ## Part 2 — Research topics
 
-Use this section as the research backlog. Mark status in frontmatter `pending_from_braindump` when a topic becomes an implementation task.
+Use this section as the research backlog. **Detailed briefs:** [`_bmad-output/research/research-index.md`](../research/research-index.md). Mark status in frontmatter `pending_from_braindump` when a topic becomes an implementation task.
 
-| ID | Topic | Status | Priority | Notes / output |
+| ID | Topic | Status | Priority | Research brief |
 |----|-------|--------|----------|----------------|
-| **R-01** | **How BMad-method skills are structured** | open | P0 | See [R-01 detail](#r-01-how-bmad-method-skills-are-structured) below |
-| R-02 | Prisma multi-file schema + generator client | open | P1 | Cat #14; spike `prisma/schema/` fragments |
-| R-03 | k6 per-layer load/perf grid | open | P1 | Cat #17; `testing/load/{frontend,backend,microservices}/` |
-| R-04 | TanStack-first frontend scaffold gate | open | P1 | Cat #18; Query/Router/Table before Redux |
-| R-05 | Utility/static class taxonomy | open | P2 | Cat #20; promote at ≥3 related helpers |
-| R-06 | Promise exception registry (T2) | open | P2 | Cat #15; `docs/decisions/promise-exceptions.md` |
-| R-07 | `bmad-workspace-rules` skill skeleton | open | P0 | Tri-file → single-file; load Appendix A + B |
-| R-08 | ADRs for T1 + T3 | open | P0 | `docs/decisions/001-shared-dto-package.md`, `002-repository-triad.md` |
-| R-09 | Mirror docs layout + post-commit cartographer | open | P1 | Cat #3, #8; `docs/` mirrors code |
-| R-10 | Editorial pipeline automation | open | P2 | Cat #19; wire Helper chain after writes |
-| R-11 | YOLO safety interlock + pre-flight quiz | open | P2 | Cat #5; refuse low-confidence YOLO |
-| R-12 | Helper-vs-Writer dispatcher | open | P2 | Cat #22; task classification rules |
+| **R-01** | **How BMad-method skills are structured** | in_progress | P0 | [R-01-bmad-skill-anatomy.md](../research/R-01-bmad-skill-anatomy.md) |
+| R-02 | Prisma multi-file schema + generator client | open | P1 | [R-02-prisma-schema-shards.md](../research/R-02-prisma-schema-shards.md) |
+| R-03 | k6 per-layer load/perf grid | open | P1 | [R-03-k6-perimeter-grid.md](../research/R-03-k6-perimeter-grid.md) |
+| R-04 | TanStack-first frontend scaffold gate | open | P1 | [R-04-tanstack-scaffold-gate.md](../research/R-04-tanstack-scaffold-gate.md) |
+| R-05 | Utility/static class taxonomy | open | P2 | [R-05-utility-taxonomy.md](../research/R-05-utility-taxonomy.md) |
+| R-06 | Promise exception registry (T2) | open | P2 | [R-06-promise-exception-registry.md](../research/R-06-promise-exception-registry.md) |
+| R-07 | `bmad-workspace-rules` skill skeleton | open | P0 | [R-07-workspace-rules-skill-skeleton.md](../research/R-07-workspace-rules-skill-skeleton.md) |
+| R-08 | ADRs for T1 + T3 | open | P0 | [R-08-adrs-t1-t3.md](../research/R-08-adrs-t1-t3.md) |
+| R-09 | Mirror docs layout + post-commit cartographer | open | P1 | [R-09-mirror-docs-cartographer.md](../research/R-09-mirror-docs-cartographer.md) |
+| R-10 | Editorial pipeline automation | open | P2 | [R-10-editorial-pipeline-automation.md](../research/R-10-editorial-pipeline-automation.md) |
+| R-11 | YOLO safety interlock + pre-flight quiz | open | P2 | [R-11-yolo-safety-interlock.md](../research/R-11-yolo-safety-interlock.md) |
+| R-12 | Helper-vs-Writer dispatcher | open | P2 | [R-12-helper-writer-dispatcher.md](../research/R-12-helper-writer-dispatcher.md) |
 
 ### R-01: How BMad-method skills are structured
 
