@@ -1,6 +1,6 @@
 ---
 id: R-05
-status: open
+status: closed
 priority: P2
 brainstorm_ref: 'Part 2 R-05; Cat #20'
 ---

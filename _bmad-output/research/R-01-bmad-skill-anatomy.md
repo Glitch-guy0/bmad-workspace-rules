@@ -1,6 +1,6 @@
 ---
 id: R-01
-status: in_progress
+status: closed
 priority: P0
 brainstorm_ref: 'Part 2 R-01'
 blocks: [R-07, R-12]

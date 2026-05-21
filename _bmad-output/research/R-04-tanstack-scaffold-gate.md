@@ -1,6 +1,6 @@
 ---
 id: R-04
-status: open
+status: closed
 priority: P1
 brainstorm_ref: 'Part 2 R-04; Cat #18; constitution: MUST prefer TanStack'
 ---

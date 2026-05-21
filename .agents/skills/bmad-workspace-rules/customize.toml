@@ -1,0 +1,15 @@
+# bmad-workspace-rules customization
+
+[workflow]
+constitution_path = "_bmad-output/brainstorming/brainstorming-session-2026-05-19-consolidated.md"
+research_index_path = "_bmad-output/research/research-index.md"
+docs_output_path = "{project-root}/docs"
+adr_path = "{project-root}/docs/decisions"
+mode = "post-commit"
+max_files_per_session = 10
+yolo_defaults_enabled = true
+
+[workflow.activation_steps_prepend]
+# Run after bmad-dev-story
+
+[workflow.activation_steps_append]

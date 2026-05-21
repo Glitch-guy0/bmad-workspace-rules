@@ -1,6 +1,6 @@
 ---
 id: R-03
-status: open
+status: closed
 priority: P1
 brainstorm_ref: 'Part 2 R-03; Cat #17; constitution: MUST use k6'
 ---

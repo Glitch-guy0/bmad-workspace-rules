@@ -1,10 +1,10 @@
 ---
-status: active
+status: closed
 created: '2026-05-19'
 source: '_bmad-output/brainstorming/brainstorming-session-2026-05-19-consolidated.md'
 topics_total: 12
-topics_open: 12
-topics_closed: 0
+topics_open: 0
+topics_closed: 12
 ---
 
 # Research Index — bmad-workspace-rules
@@ -38,18 +38,18 @@ topics_closed: 0
 
 | ID | Brief | Priority | Status | Brainstorm cats | Blocked by |
 |----|-------|----------|--------|-----------------|------------|
-| R-01 | [R-01-bmad-skill-anatomy.md](./R-01-bmad-skill-anatomy.md) | P0 | in_progress | — | — |
-| R-07 | [R-07-workspace-rules-skill-skeleton.md](./R-07-workspace-rules-skill-skeleton.md) | P0 | open | #10, #12, #1 | R-01 |
-| R-08 | [R-08-adrs-t1-t3.md](./R-08-adrs-t1-t3.md) | P0 | open | #7, T1, T3 | — |
-| R-02 | [R-02-prisma-schema-shards.md](./R-02-prisma-schema-shards.md) | P1 | open | #14 | — |
-| R-03 | [R-03-k6-perimeter-grid.md](./R-03-k6-perimeter-grid.md) | P1 | open | #17 | — |
-| R-04 | [R-04-tanstack-scaffold-gate.md](./R-04-tanstack-scaffold-gate.md) | P1 | open | #18 | — |
-| R-09 | [R-09-mirror-docs-cartographer.md](./R-09-mirror-docs-cartographer.md) | P1 | open | #3, #8, #9 | R-07 |
-| R-05 | [R-05-utility-taxonomy.md](./R-05-utility-taxonomy.md) | P2 | open | #20 | — |
-| R-06 | [R-06-promise-exception-registry.md](./R-06-promise-exception-registry.md) | P2 | open | #15, T2 | — |
-| R-10 | [R-10-editorial-pipeline-automation.md](./R-10-editorial-pipeline-automation.md) | P2 | open | #19 | R-09 |
-| R-11 | [R-11-yolo-safety-interlock.md](./R-11-yolo-safety-interlock.md) | P2 | open | #2, #5, #6 | R-07 |
-| R-12 | [R-12-helper-writer-dispatcher.md](./R-12-helper-writer-dispatcher.md) | P2 | open | #22 | R-01 |
+| R-01 | [R-01-bmad-skill-anatomy.md](./R-01-bmad-skill-anatomy.md) | P0 | closed | — | — |
+| R-07 | [R-07-workspace-rules-skill-skeleton.md](./R-07-workspace-rules-skill-skeleton.md) | P0 | closed | #10, #12, #1 | R-01 |
+| R-08 | [R-08-adrs-t1-t3.md](./R-08-adrs-t1-t3.md) | P0 | closed | #7, T1, T3 | — |
+| R-02 | [R-02-prisma-schema-shards.md](./R-02-prisma-schema-shards.md) | P1 | closed | #14 | — |
+| R-03 | [R-03-k6-perimeter-grid.md](./R-03-k6-perimeter-grid.md) | P1 | closed | #17 | — |
+| R-04 | [R-04-tanstack-scaffold-gate.md](./R-04-tanstack-scaffold-gate.md) | P1 | closed | #18 | — |
+| R-09 | [R-09-mirror-docs-cartographer.md](./R-09-mirror-docs-cartographer.md) | P1 | closed | #3, #8, #9 | R-07 |
+| R-05 | [R-05-utility-taxonomy.md](./R-05-utility-taxonomy.md) | P2 | closed | #20 | — |
+| R-06 | [R-06-promise-exception-registry.md](./R-06-promise-exception-registry.md) | P2 | closed | #15, T2 | — |
+| R-10 | [R-10-editorial-pipeline-automation.md](./R-10-editorial-pipeline-automation.md) | P2 | closed | #19 | R-09 |
+| R-11 | [R-11-yolo-safety-interlock.md](./R-11-yolo-safety-interlock.md) | P2 | closed | #2, #5, #6 | R-07 |
+| R-12 | [R-12-helper-writer-dispatcher.md](./R-12-helper-writer-dispatcher.md) | P2 | closed | #22 | R-01 |
 
 ---
 

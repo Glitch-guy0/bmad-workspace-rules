@@ -1,6 +1,6 @@
 ---
 id: R-11
-status: open
+status: closed
 priority: P2
 brainstorm_ref: 'Part 2 R-11; Cat #2, #5, #6'
 blocked_by: [R-07]

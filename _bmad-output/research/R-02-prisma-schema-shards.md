@@ -1,6 +1,6 @@
 ---
 id: R-02
-status: open
+status: closed
 priority: P1
 brainstorm_ref: 'Part 2 R-02; Cat #14; pending: Prisma shards'
 ---
