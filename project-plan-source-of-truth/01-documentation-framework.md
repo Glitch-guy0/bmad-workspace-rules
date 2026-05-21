@@ -25,6 +25,33 @@ This section covers the Product Documentation Framework — the source-of-truth 
 - Stripe: RFC process — every change gets RFC (what, why, alternatives), permanent record
 - Common thread: one owner per doc, status always visible, "why" is recorded
 
+## Decision-Making Tiers (Three-Level Framework)
+
+- Every decision originates at one of three levels, each with its own research domain, decision type, and output feeding the next level
+
+  **VP Level — Strategic Research**
+  - Question: "What bets should we make?"
+  - Research: market sizing, competitive landscape, business model, strategic constraints
+  - Decides: strategic direction
+  - Output: Strategic Directive → PM
+  - Documents: Strategic Research Doc, SDR (Strategic Decision Record)
+
+  **PM Level — Product Research**
+  - Question: "What should we build within that direction?"
+  - Research: user understanding, product analysis, competitive detail, scope decisions
+  - Decides: what goes into milestones
+  - Output: Milestone Confirmation → Senior Dev
+  - Documents: Product Research Doc, PDR (Product Decision Record)
+
+  **Senior Developer Level — Technical Research**
+  - Research: architecture exploration, algorithm evaluation, risk investigation, constraint analysis
+  - Decides: how the system is built
+  - Output: Implementation Report → PM
+  - Documents: Spike Doc, ADR, TDD
+
+- Feedback loops: each level sends findings back up (Senior Dev → PM, PM → VP, VP → PM reactive)
+- Decisions flow down; information flows up
+
 ## Master Flow (Q1-Q10)
 - Product level: Raw idea → [Q1] Idea Capture → Discovery Backlog → [Q2] Validated → Milestone List → [Q3] Milestone Structured → [Q4] Dependency Check → [Q5] Milestone Confirmation File (THE HANDOFF)
 - Technical level: [Q6] Technical Doc Stack (TDD, ADR, API contracts) → [Q7] Validation & Sign-off → [Q8] Implementation Planning → [Q9] Test Scenarios + Atomic Changes → [Q10] Implementation + Doc Updates
@@ -54,6 +81,17 @@ This section covers the Product Documentation Framework — the source-of-truth 
 - Signed-off handoff document between product and engineering
 - Contains: goal, user flows (step-by-step), confirmed requirements with AC, explicit out-of-scope, success metrics, resolved open questions, confirmed dependencies, acknowledged risks, linked docs
 - Versioned (v1.0, v1.1...) with changelog; original preserved on scope changes
+
+### Product Planning Track (Pre-Q1 Artifacts)
+
+**Product Research Doc** — dedicated exploration before complex decisions
+- Needed when: user behaviour unknown, competitive gap analysis, segment prioritisation, "What problem are we really solving?"
+- Format: Date | Owner | Time-box | Feeds into (PDR or milestone) → QUESTION → METHOD (interviews, data analysis, competitor review) → FINDINGS → IMPLICATIONS → RECOMMENDATION
+
+**PDR — Product Decision Record** — product-level equivalent of ADR
+- For decisions that shape requirements (not define them): "Should this be one feature or two?", "Which user segment first?", "Build vs integrate?"
+- Captures decisions currently invisible (made in Slack/meetings, quietly assumed in milestone doc)
+- Format: PDR-[n]: Title | Status (Proposed/Accepted/Superseded) | Date | Raised by | Affects | QUESTION | CONTEXT | RESEARCH DONE | OPTIONS CONSIDERED (A/B with pros/cons) | DECISION | TRADE-OFFS ACCEPTED | OUTCOME (filled post-ship)
 
 ### Q6: Technical Document Stack
 - TDD (Technical Design Document): how system will be built — overview, system context, approach, data model, API design, component design, edge cases, performance, security, open questions
@@ -127,6 +165,28 @@ This section covers the Product Documentation Framework — the source-of-truth 
 - `implementation/[slug]/{progress.md, decisions-log.md}`
 - `reports/[slug]-report.md`, `archive/[slug]/`
 - Key rules: no planning file until dto/incoming/ has the confirmed file; dto/incoming/ never edited; ADRs filed at decision moment not at end; decisions-log promoted to ADRs before report generation
+
+## Complete Three-Tier Document Structure
+
+- **Tier 1 — VP / Strategic** (strategy/ folder in product-repo):
+  - `strategy/research/[strategic-research-slug].md` — market, competitive, business research
+  - `strategy/sdrs/SDR-[n]-[title].md` — Strategic Decision Records
+  - `strategy/directives/[directive-slug].md` — strategic directive handed to PM
+
+- **Tier 2 — PM / Product** (product-repo):
+  - `milestones/active/[slug]/research/[product-research-slug].md` — user, usage, competitive detail research
+  - `milestones/active/[slug]/pdrs/PDR-[n]-[title].md` — Product Decision Records
+  - Existing: milestone docs, feature-index, ideas, NFR proposals
+
+- **Tier 3 — Senior Developer / Technical** (dev-repo):
+  - `planning/[slug]/spikes/[spike-slug].md` — technical unknowns
+  - `planning/[slug]/adrs/ADR-[n]-[title].md` — Architecture Decision Records
+  - Existing: TDD, ERD, API contracts, implementation plans
+
+- Three clean handoffs between levels:
+  - **VP → PM**: Strategic Directive — bet, target segment, success definition, constraints, open questions for PM
+  - **PM → Senior Dev**: Milestone Confirmation File — confirmed requirements, user flows, AC, out of scope, success metrics
+  - **Senior Dev → PM**: Implementation Report — what shipped, deviations, doc updates, retro note, NFR/debt notifications
 
 ## Agent Flow (Full Milestone Lifecycle)
 - Product Agent: Idea phase → Validation → Stress Test (structured Q&A) → Sign-off → Waiting → Update phase (on incoming report)

@@ -74,3 +74,25 @@ This section covers Architecture Decision Records and Published Engineering Prac
 - Constitution missing → refuse; >N files → refuse; destructive op → dry-run; brownfield + no project-context.md → suggest generate-project-context; YOLO keyword → skip Q&A with file cap + undo note
 - Pre-flight quiz: max 2 architecture questions, verify constitution path, check git context
 - Dry-run: unified diff + undo block in session log (git checkout + rm commands)
+
+## PDR — Product Decision Record
+- Product-level equivalent of ADR; for decisions that shape requirements rather than define them
+- Captures decisions previously invisible (made in Slack/meetings, quietly assumed in milestone doc)
+- Examples: "Should export be a feature or a standalone product?", "Onboarding: wizard or blank state?", "Which user segment first?"
+- Format: PDR-[n]: Title | Status (Proposed/Accepted/Superseded) | Date | Raised by | Affects | QUESTION | CONTEXT | RESEARCH DONE | OPTIONS CONSIDERED (A/B with pros/cons) | DECISION | TRADE-OFFS ACCEPTED | OUTCOME (filled post-ship)
+- Filed at: `product-repo/milestones/active/[slug]/pdrs/PDR-[n]-[title].md`
+- Product Decision Records live in the product repo, not the dev repo
+
+## SDR — Strategic Decision Record
+- VP-level equivalent of ADR; for strategic bets that frame multiple milestones
+- Research domains: market sizing, segment analysis, competitive landscape, business model, build vs buy vs partner
+- Filed at: `strategy/sdrs/SDR-[n]-[title].md`
+- Feeds into Strategic Directive documents that trigger PM work
+
+## Decision Record Hierarchy
+- Three levels, one record type per level:
+  - **VP**: SDR (Strategic Decision Record) — market + business context
+  - **PM**: PDR (Product Decision Record) — user + product context
+  - **Senior Dev**: ADR (Architecture Decision Record) — technical + system context
+- Each level has its own research doc (Strategic Research Doc → Product Research Doc → Spike Doc) feeding the decision record
+- Decisions flow down; feedback flows up
