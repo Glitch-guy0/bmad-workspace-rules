@@ -5,7 +5,7 @@
 - .gitignore
 - src
 - docs
-  - index.md
+  - _index.md
   - NN-topic-name.md*
 - missing.md — issues from failing test cases (human-operated)
 - milestones.md
@@ -21,7 +21,7 @@ This is a skill repo containing resources for bmad skill generation
 - steps can be cyclic only if the process has steps
 
 ### docs
-- `index.md` as entrypoint — frontmatter metadata (type, sources, manifests), section manifest table with links
+- `_index.md` as entrypoint — frontmatter metadata (type, sources, manifests), section manifest table with links
 - numbered section files (`NN-topic-name.md`) — ordered, one atomic topic per file
 
 ## User Reference related

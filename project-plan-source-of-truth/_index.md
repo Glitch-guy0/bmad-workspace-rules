@@ -1,6 +1,7 @@
 ---
 type: bmad-distillate
 sources:
+  - "../final-plan.md"
   - "../framework.md"
   - "../_bmad-output/brainstorming/consolidated-session-complete.md"
   - "../_bmad-output/research/research-complete.md"
@@ -8,9 +9,9 @@ sources:
   - "../docs/engineering/engineering-complete.md"
   - "../documentation.md"
 downstream_consumer: "project-planning"
-created: "2026-05-21"
-token_estimate: 4800
-parts: 5
+created: "2026-05-22"
+token_estimate: 11500
+parts: 8
 validation_status: "verified"
 verified_by: "user"
 verified_date: "2026-05-21"
@@ -18,31 +19,42 @@ verified_date: "2026-05-21"
 
 # Project Plan — Source of Truth
 
-> **Validated content.** All contents below have been reviewed and confirmed by the user. This is the foundation for all forward planning and implementation.
+> Validated content. Foundation for all forward planning and implementation.
 
-- Distilled 6 source documents (~48K tokens) into 5 self-contained sections
-- **Primary source of truth: Product Documentation Framework** (framework.md — 2455 lines) — the governing methodology for product docs lifecycle, repo architecture, and file indexing
-- Supporting sources: brainstorming session, research backlog, ADRs, engineering docs, documentation guidelines
-- All decisions, constraints, named entities, and relationships preserved
-- Project-specific tech stack details (architecture, skills, ADRs) follow the framework sections
-- **Planning must reference this document first** before creating any new docs, architecture, or implementation
+## Orientation
+
+- Distilled from `final-plan.md` (34,765 source tokens), a living documentation framework for products from MVP to year 5+. Describes layered documentation model, two-repo product/engineering system, decision-tracking hierarchy, and BMAD skill automation.
+- Supporting sources: brainstorming session, research backlog, ADRs, engineering docs, documentation guidelines.
+- All processes, templates, rules, file structures, and conventions preserved factually. Prose elaboration removed.
+- Split into 8 sections covering framework, repo architecture, NFR/debt/indexing, decision-making hierarchy, BMAD skill setup, project constitution, ADRs, and documentation guidelines.
 
 ## Section Manifest
 
-| # | File | Description | Priority |
-|---|------|-------------|----------|
-| 1 | `01-documentation-framework.md` | **Product Documentation Framework** — layered model, master flow (Q1-Q10), repo architecture, DTO handoffs, NFRs, tech debt, file indexing system | PRIMARY |
-| 2 | `02-project-constitution.md` | Project Constitution — architecture philosophy, layered BE/FE, testing strategy, DX, naming, libraries of choice | supporting |
-| 3 | `03-bmad-skill-system.md` | BMad skill anatomy, families (Helper/Writer), all R-01 through R-12 research findings | supporting |
-| 4 | `04-architecture-decisions.md` | ADR 001 (Shared DTO), ADR 002 (Repository Triad), Promise Exception Registry, engineering practices | supporting |
-| 5 | `05-documentation-guidelines.md` | Documentation types, general guidelines, contribution docs philosophy | supporting |
+| # | File | Topic | Priority |
+|---|------|-------|----------|
+| 1 | `01-documentation-framework.md` | Q1-Q10: Idea capture, milestone structure, TDD, ADR, API, ERD, validation gates, implementation planning, testing, definition of done | PRIMARY |
+| 2 | `02-repo-agent-structure.md` | Two-repo architecture, DTO handoffs, product/dev file trees, agent flow, stress test, naming conventions, cross-repo doc map | PRIMARY |
+| 3 | `03-nfr-tech-debt-indexing.md` | NFR patterns/flows, tech debt (accepted/postponed), file indexing system (headers, indexes, link chain, agent nav modes) | PRIMARY |
+| 4 | `04-decision-making-org-flow.md` | PDR & Product Research Doc, three-tier org (VP/PM/Senior Dev), handoff documents, feedback loops, strategic layer structure, SDR | PRIMARY |
+| 5 | `05-bmad-skill-setup-slice.md` | BMAD skill internal structure, INIT setup, submodule/single-repo options, Sync decision layer, vertical slice planning, three operations (INIT/VALIDATE/SYNC) | PRIMARY |
+| 6 | `06-project-constitution.md` | Project Constitution — architecture philosophy, layered BE/FE, testing strategy, DX, naming, libraries of choice | supporting |
+| 7 | `07-architecture-decisions.md` | ADR 001 (Shared DTO), ADR 002 (Repository Triad), Promise Exception Registry, PDR/SDR hierarchy, engineering practices | supporting |
+| 8 | `08-documentation-guidelines.md` | Documentation types, general guidelines, contribution docs philosophy | supporting |
 
 ## Cross-Cutting Items
 
-- **Documentation Framework governs all**: the methodologies in section 01 (layered model, Q1-Q10, repo architecture, file indexing) are the highest-priority reference for how documentation is structured and maintained
-- Project Constitution provides tech-specific architecture rules; framework provides the doc methodology
-- ADRs override constitution when conflicts arise; ADRs live in `docs/decisions/`
-- Research topics (R-01 through R-12) inform both engineering docs and skill scaffolding
-- BMad skills operate on a two-family system: Helpers (refine/compress) and Writers (create/maintain)
-- Editorial pipeline: prose review → structure review → shard → index → distill (optional)
+- Progressive disclosure: 4 layers (Layer 1: one-liner, Layer 2: summary, Layer 3: brief flow, Layer 4: detailed spec) — applied to docs AND file system (repo _index.md → folder _index.md → file header → content)
+- The 5-Year Arc: Month 1-2 (MVP, no docs needed) → Year 1-2 (tribal knowledge, 3-4 people hold system) → Year 3 (key person leaves, panic doc sprint → Confluence graveyard) → Year 4-5 (nobody knows why decisions made, debt compounds). Root cause: failure of structure, not discipline
+- Big org patterns: Google (one doc per feature, owner named, status visible, written justifications), Amazon (Six-Pager), Stripe (RFC process). Common thread: one owner per doc, visible status, recorded why
+- The Master Flow: Raw idea → [Q1] Idea Capture → Discovery Backlog → [Q2] Validated → Added to Milestone → [Q3] Milestone Structured (Epic→Stories→AC) → [Q4] Dependency check → [Q5] Milestone Confirmation File (handoff) → [Q6] Tech Document Stack (TDD/ADR/API/ERD/Spike) → [Q7] Validation & Sign-Off → [Q8] Implementation Planning (layers 1-3) → [Q9] Test scenarios + atomic change plan → [Q10] Implementation + doc updates
+- Format rules that work: lead with status and ownership; collapse detail by default; diagrams before prose; tables for comparisons; short sentences, active voice
+- Tackling documentation debt: Phase 1 (1-2 days): headers everywhere with Layer 1-2. Phase 2 (1-2 weeks): flow diagrams for 20% of features responsible for 80% of questions/bugs. Phase 3 (ongoing): deep docs on demand. Never document stable things nobody touches — dead docs mislead more than no docs
+- Decision reference copies in both repos: type=decision-reference, contains source path in originating repo, synced date, summary from receiving team's perspective, impact on this side
+- Kebab-case slugs for all files/folders. ISO 8601 dates (YYYY-MM-DD). Status lives in file header, never filename. Lifecycle communicated by folder location (active → confirmed → completed; postponed → nfr-proposals → planning)
+- All documents open with YAML frontmatter: slug, type, status, owner, created, updated, upstream, downstream
+- Three DTOs: DTO 1 (Milestone Confirmation, product→dev), DTO 2 (Implementation Report, dev→product), DTO 3 (NFR Proposal, dev→product)
+- Every folder must have _index.md. Underscore prefix keeps it sorted to top
+- Editorial pipeline: bmad-editorial-review-prose → bmad-editorial-review-structure → bmad-shard-doc (conditional >500 lines) → bmad-index-docs → bmad-distillator (optional)
 - Brownfield strategy: Surgical Strike — new files follow new rules, legacy files get migration tickets
+- Sections 01-05 from final-plan.md distillate. Sections 06-08 preserved from earlier project-plan source-of-truth.
+- **Planning must reference this document first** before creating any new docs, architecture, or implementation.

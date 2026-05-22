@@ -33,6 +33,9 @@ This section covers Architecture Decision Records and Published Engineering Prac
 - Skill families table: Workflow (thin SKILL.md → workflow.md), Agent (resolver → persona → menu), Multi-agent (orchestrator + agents/*.md), Builder/meta (long SKILL.md + references/ + scripts/)
 - Directory structure: SKILL.md, workflow.md, steps/*.md, references/, assets/, scripts/, agents/, customize.toml
 - Frontmatter: name (kebab-case), description ([5-8 word summary]. [Use when user says 'phrase'.])
+- Path conventions: Bare paths resolve from skill root; {skill-root} → skill install directory; {project-root} → project working directory; {skill-name} → skill directory basename
+- Layer responsibilities: SKILL.md (entry — always required); workflow.md (multi-step orchestration); steps/\*.md (sequential micro-steps); references/ (carved prompts); assets/ (templates, CSV); scripts/ (deterministic ops); agents/ (subagent prompts); customize.toml (team overrides)
+- When to choose architecture: <200 lines/few stages → inline in SKILL.md; many stages → workflow.md + steps/; large skill with independent sections → references/; validation/scanning → scripts/; persona + menu → agent skill; cross-session artifact → decision-log
 - Helper vs Writer: Helper = prose → structure → shard → index → distill; Writer = tech-writer, document-project, generate-project-context
 - Quality bar: "Would an LLM do this correctly without being told?"; outcome-based instructions over numbered trivia
 
@@ -74,6 +77,16 @@ This section covers Architecture Decision Records and Published Engineering Prac
 - Constitution missing → refuse; >N files → refuse; destructive op → dry-run; brownfield + no project-context.md → suggest generate-project-context; YOLO keyword → skip Q&A with file cap + undo note
 - Pre-flight quiz: max 2 architecture questions, verify constitution path, check git context
 - Dry-run: unified diff + undo block in session log (git checkout + rm commands)
+
+## bmad-workspace-rules Skill (R-07)
+- Skill package: `.agents/skills/bmad-workspace-rules/` — SKILL.md + customize.toml + references/ (constitution-loader, mirror-docs-rules, surgical-strike, coverage-report, helper-writer-router) + assets/ (coverage-report-template)
+- Recommended family: complex workflow skill (not persona agent) with optional customize.toml hooks
+- Activation flow: bmad-dev-story → bmad-workspace-rules (prepend hook) → resolve customize.toml → load constitution → git diff HEAD~1 → route to mode (initial-setup, post-commit, re-baseline, surgical-strike) → deviation check → ADR if needed
+- Config keys: constitution_path, research_index_path, docs_output_path, adr_path, mode (initial-setup|post-commit|re-baseline|surgical-strike), max_files_per_session, yolo_defaults_enabled
+
+## Helper-vs-Writer Skill Dispatcher (R-12)
+- Classification: unstructured notes → Helper chain; compress brainstorm → Helper (distillator); new API/module tech doc → Writer; unknown brownfield → Writer (generate-project-context); post-implementation → workspace rules; architecture deviation → ADR
+- Decision flow: Brownfield? → generate-project-context first. Needs structuring? → Helper chain. Net-new tech doc? → Writer. After dev-story? → bmad-workspace-rules
 
 ## PDR — Product Decision Record
 - Product-level equivalent of ADR; for decisions that shape requirements rather than define them
