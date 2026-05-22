@@ -7,8 +7,7 @@
 - docs
   - _index.md
   - NN-topic-name.md*
-- missing.md — issues from failing test cases (human-operated)
-- milestones.md
+- milestones.md — featrues planned (human-operated)
 
 ## conventions
 
@@ -25,7 +24,6 @@ This is a skill repo containing resources for bmad skill generation
 - numbered section files (`NN-topic-name.md`) — ordered, one atomic topic per file
 
 ## User Reference related
-- {{project root}}/missing.md tracks known issues from test failures
 - {{project root}}/milestones.md tracks development milestones
 
 ## src example
