@@ -182,7 +182,7 @@ Implementation → code, docs, and living documents updated
 A new requirement idea is any unvalidated thought about what the product should do differently or additionally. At this stage it is a hypothesis, not a decision. It needs a home that is clearly separate from confirmed work.
 
 ### Why
-If ideas go directly into the backlog or a milestone, two things break. First, unvalidated ideas pollute the actual work queue and create noise for engineers. Second, good ideas get lost in Slack threads or someone's notes and never get revisited. The idea needs to be captured in a structured but low-commitment format.
+If ideas go directly into the backlog or a milestone, two things break. First, unvalidated ideas pollute the actual work queue and create noise for engineers. Second, good ideas get lost in Slack threads or someone's notes and never get revisited. Ideas need to be captured in a structured but low-commitment format.
 
 ### How
 
@@ -453,7 +453,7 @@ LINKED DOCUMENTS
 ## Q6 — The Technical Document Stack
 
 ### What
-Once the Milestone Confirmation File is signed off, the technical phase begins. This phase has its own set of documents — each serving a specific purpose for a specific reader. These documents answer "how" — the product docs answered "what" and "why."
+Once the Milestone Confirmation File is signed off, the technical phase begins. This phase has its own set of documents — each serving a specific purpose for a specific reader. These documents answer "how" — the product docs answer "what" and "why."
 
 ### Why
 Without distinct technical documents, design decisions, API contracts, and algorithmic choices get mixed into tickets or Slack. They become invisible, undiscoverable, and impossible to revisit. Separate documents give each type of decision a permanent, findable home.
@@ -1513,7 +1513,7 @@ DEVELOPER AGENT — operates on dev-repo
 
 The stress test is the validation gate between a draft milestone and a confirmed one. It is run by the product agent with the single user before any technical work begins.
 
-**Why it exists:** A confirmed milestone is a commitment — engineering time, architecture decisions, and implementation effort will follow. An unclear requirement discovered after sign-off is expensive. A stress test surfaces these before they cost anything.
+**Why it exists:** A confirmed milestone is a commitment — engineering time, architecture decisions, and implementation effort will follow. An unclear requirement discovered after sign-off is expensive. A stress test surfaces such issues before they cost anything.
 
 **How the product agent runs it:**
 
@@ -2514,10 +2514,10 @@ For situations where the product question is too complex to decide without dedic
 
 ```
 Spike needed when:                  Product Research Doc needed when:
-  Technical unknown                   User behaviour unknown
+  Technical unknown                   User behavior unknown
   "Can this be built this way?"       "Do users actually want this?"
   Performance question                Competitive gap analysis
-  Library evaluation                  Segment prioritisation question
+  Library evaluation                  Segment prioritization question
   Algorithm feasibility               "What problem are we really solving?"
 ```
 
@@ -2671,7 +2671,7 @@ The full system spans three roles. Each has its own research domain, its own dec
 │  PM                                                      │
 │  "What should we build within that direction?"           │
 │                                                          │
-│  Researches: user behaviour, product data,               │
+│  Researches: user behavior, product data,               │
 │              competitive features, scope options         │
 │  Decides:    what goes into milestones                   │
 │  Outputs:    Milestone Confirmation → Senior Dev         │
@@ -2731,7 +2731,7 @@ USER UNDERSTANDING
   What does "good" look like from their perspective?
 
 PRODUCT ANALYSIS
-  What does usage data say about current behaviour?
+  What does usage data say about current behavior?
   What are support tickets and feedback revealing?
   What have previous milestones taught us?
 
@@ -2821,7 +2821,7 @@ PM → VP
   Revised scope signals       when research reveals a VP assumption is wrong
 
 VP → PM (reactive)
-  Strategic re-prioritisation when market or business context changes
+  Strategic re-prioritization when market or business context changes
   New constraints             competitive moves, resourcing changes
 ```
 
@@ -2978,7 +2978,7 @@ A BMAD skill is a folder. It can hold:
                   or actual runnable scripts.
 
   Tracking CSVs   "If X then Y" tables. Machine-readable rules that
-                  govern agent behaviour without hardcoding into prompts.
+                  govern agent behavior without hardcoding into prompts.
                   Example: if milestone.status = confirmed then
                            create dto/outgoing/[slug]-confirmed.md
 
@@ -3026,7 +3026,7 @@ bmad-method/
         │
         ├── tracking/
         │   └── workflow-rules.csv        If/then rules table governing agent
-        │                                 behaviour across all operations
+        │                                 behavior across all operations
         │
         └── templates/
             ├── _index.md                 Generic folder index template
@@ -3249,7 +3249,7 @@ A new folder in both repos that acts as the receiving end of synced decisions:
 ```
 planning/
 └── decisions/                 ← NEW — receives decisions from implementation
-    ├── _index.md              All synced decisions, dated, categorised
+    ├── _index.md              All synced decisions, dated, categorized
     └── arch-[slug].md         Reference copy of an ADR from dev side
 
 implementation/dev-planning/

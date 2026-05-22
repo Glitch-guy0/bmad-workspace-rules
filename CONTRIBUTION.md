@@ -5,12 +5,14 @@
 - .gitignore
 - src
 - docs
-  - missing.md — issues from failing test cases (human-operated)
-  - milestones.md
+  - index.md
+  - NN-topic-name.md*
+- missing.md — issues from failing test cases (human-operated)
+- milestones.md
 
 ## conventions
 
-this is a skill repo containing resources for bmad skill generation
+This is a skill repo containing resources for bmad skill generation
 
 ### src
 - SKILL.md serves as the module index file
@@ -19,8 +21,12 @@ this is a skill repo containing resources for bmad skill generation
 - steps can be cyclic only if the process has steps
 
 ### docs
-- missing.md tracks known issues from test failures
-- milestones.md tracks development milestones
+- `index.md` as entrypoint — frontmatter metadata (type, sources, manifests), section manifest table with links
+- numbered section files (`NN-topic-name.md`) — ordered, one atomic topic per file
+
+## User Reference related
+- {{project root}}/missing.md tracks known issues from test failures
+- {{project root}}/milestones.md tracks development milestones
 
 ## src example
 
