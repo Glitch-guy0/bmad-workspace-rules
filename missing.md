@@ -6,22 +6,20 @@
 
 | # | Issue | File | Discovered | Status |
 |---|-------|------|------------|--------|
+| 1 | Define repo-update workflow skill for already-implemented repos | skill-definition | 2026-05-22 | Open |
 
 ## Resolved
 
 | # | Issue | File | Discovered | Resolved |
 |---|-------|------|------------|----------|
 
+## Workflow Reference: Repo-Update Process
 
-----
-# braindump 
-- this is user dump section which needs to be update above in a structural format
+Applicable when a skill is invoked against an existing repository with user requirements ready.
 
-## how to work with alreay implemented repository
-- the skill is being called and user has requirements ready and need to update the repo
-- first divide the whole repo into sections
-- have a temporary file name {{project root}}/_repo-update-task-list.md containing all the required context
-- prompt user that things are allocated and ready to implement
-- prompt user after each section implementation completion, to commit the current changes and to rerun the process again in a new session.
-- after completion prompt user to approve to delete the temporary configuration file.
-- refering to this when skill is invoked, need to check "am i updating repo" via these files and update.
+1. Divide the whole repo into sections.
+2. Create a temporary file `{{project root}}/_repo-update-task-list.md` containing all required context.
+3. Prompt user that things are allocated and ready to implement.
+4. After each section implementation completion, prompt user to commit changes and rerun process in a new session.
+5. After completion, prompt user to approve deletion of `{{project root}}/_repo-update-task-list.md` file.
+6. On subsequent skill invocations, check `_repo-update-task-list.md` to determine if this is a repo-update session.
