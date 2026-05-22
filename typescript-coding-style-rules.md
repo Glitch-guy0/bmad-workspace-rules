@@ -882,9 +882,11 @@ fix(frontend): handle expired token redirect loop
 - Add tests for new modules (unit + route).
 - Use `async/await` — no raw `.then()` chains.
 - Use `strict: true` TypeScript — no `any` without justification comment.
-- Add JSDoc for public API of classes.
+- Add JSDoc for all functions and class.
 - Extract shared logic to `src/utils/` (backend) or `src/lib/` (frontend).
-- Prefer duplication over premature abstraction (extract after 3rd occurrence).
+- Extract shared between frontend and backend to `src/helpers` example `dto` in `src/helpers/dto` each folder is a unique repo.
+  - example dto: `import UserDTO from 'dto';`
+- Prefer duplication over premature abstraction (extract after 3rd occurrence) but duplication of code must be recorded why it is present and when to remove it.
 
 ### DO NOT
 - Put business logic in controllers (controllers delegate to services).
