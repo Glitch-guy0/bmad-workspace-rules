@@ -37,7 +37,7 @@ verified_date: "2026-05-21"
 | 3 | `03-nfr-tech-debt-indexing.md` | NFR patterns/flows, tech debt (accepted/postponed), file indexing system (headers, indexes, link chain, agent nav modes) | PRIMARY |
 | 4 | `04-decision-making-org-flow.md` | PDR & Product Research Doc, three-tier org (VP/PM/Senior Dev), handoff documents, feedback loops, strategic layer structure, SDR | PRIMARY |
 | 5 | `05-bmad-skill-setup-slice.md` | BMAD skill internal structure, INIT setup, submodule/single-repo options, Sync decision layer, vertical slice planning, three operations (INIT/VALIDATE/SYNC) | PRIMARY |
-| 6 | `06-project-constitution.md` | Project Constitution — architecture philosophy, layered BE/FE, testing strategy, DX, naming, libraries of choice | supporting |
+| 6 | `06-project-constitution.md` | Project Constitution — architecture philosophy, layered BE/FE, testing strategy, DX, naming, libraries of choice; detailed coding standards (module structure, controller/service/repository patterns, middleware, DB conventions, component patterns, API client, naming, testing, quality rules, git conventions, AI agent rules) | supporting |
 | 7 | `07-architecture-decisions.md` | ADR 001 (Shared DTO), ADR 002 (Repository Triad), Promise Exception Registry, PDR/SDR hierarchy, engineering practices | supporting |
 | 8 | `08-documentation-guidelines.md` | Documentation types, general guidelines, contribution docs philosophy | supporting |
 
