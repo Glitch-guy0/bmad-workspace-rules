@@ -203,14 +203,16 @@ parts: 1
 
 ### Controller Pattern
 - Static methods (class) or standalone exported functions
-- `try/catch` wrapping with `next(err)` delegation
-- Response envelope: `{ success, data, error, meta }`
+- Try/catch wrapping: Zod parse input → service call → `AppResponse.Success(data)` or `AppResponse.Failure(err)`
 - Zod validation via DTO schemas at controller entry
+- Never format response inline — always delegate to `AppResponse`
 - Keep under 30 lines
 
-### Response Envelope
-- Success: `{ success: true, data: T, error: null, meta: { version } }`
-- Error: `{ success: false, data: null, error: { message, code, status, details } }`
+### Response Envelope (AppResponse)
+- `AppResponse.Success<D>(data: D)` — wraps data in `{ success: true, data }`
+- `AppResponse.Failure(error: AppException)` — wraps error in `{ success: false, error: { message, code, status, details } }`
+- Lives in `utils/AppResponse.ts` — duplicated per backend/frontend with different body formats
+- Controllers never write raw JSON — always use `AppResponse`
 
 ### Service Pattern
 - Static methods or standalone functions
@@ -241,7 +243,8 @@ parts: 1
 ### Middleware
 - Auth: Bearer token extraction → JWT RS256 verification → `req.user` attachment
 - Upload: multer memoryStorage, 50MB limit, PDF-only (mimetype + magic bytes)
-- Error: global Express 4-arg handler, typed error → structured response
+- Error: global Express 4-arg handler, typed error → structured response via `AppResponse.Failure`
+- Logging: log incoming requests with `X-Trace-Id` header as correlation ID; log outgoing responses with same traceId, status, duration
 
 ### Database Conventions
 - All columns: snake_case with `@map()`
@@ -329,7 +332,7 @@ parts: 1
 ### Code Quality Rules
 - DO: Follow existing patterns, Zod validation in controllers (not services), typed exceptions, async/await, strict TS, JSDoc, co-located tests
 - DO: Extract shared logic to `utils/` (backend) or `lib/` (frontend)
-- DO NOT: Business logic in controllers, console.log in production, cross-imports between services, skip tests, commit secrets, use `.then()` chains, change response envelope format, add TODO/placeholder code, create one exception file per error type
+- DO NOT: Business logic in controllers, console.log in production, cross-imports between services, skip tests, commit secrets, use `.then()` chains, change AppResponse envelope format, add TODO/placeholder code, create one exception file per error type
 
 ### Git Conventions
 - Branch: `<type>/<short-description>` — types: feat, fix, chore, refactor, docs
