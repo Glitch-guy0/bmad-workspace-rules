@@ -9,12 +9,12 @@ sources:
   - "../docs/engineering/engineering-complete.md"
   - "../documentation.md"
 downstream_consumer: "project-planning"
-created: "2026-05-22"
-token_estimate: 11500
-parts: 8
-validation_status: "verified"
-verified_by: "user"
-verified_date: "2026-05-21"
+created: "2026-05-23"
+token_estimate: 13000
+parts: 10
+validation_status: "draft"
+verified_by: ""
+verified_date: ""
 ---
 
 # Project Plan — Source of Truth
@@ -26,7 +26,7 @@ verified_date: "2026-05-21"
 - Distilled from `final-plan.md` (34,765 source tokens), a living documentation framework for products from MVP to year 5+. Describes layered documentation model, two-repo product/engineering system, decision-tracking hierarchy, and BMAD skill automation.
 - Supporting sources: brainstorming session, research backlog, ADRs, engineering docs, documentation guidelines.
 - All processes, templates, rules, file structures, and conventions preserved factually. Prose elaboration removed.
-- Split into 8 sections covering framework, repo architecture, NFR/debt/indexing, decision-making hierarchy, BMAD skill setup, project constitution, ADRs, and documentation guidelines.
+- Split into 10 sections covering framework, repo architecture, NFR/debt/indexing, decision-making hierarchy, BMAD skill setup, project constitution, ADRs, documentation guidelines, export boilerplate structure, and project goal.
 
 ## Section Manifest
 
@@ -40,6 +40,8 @@ verified_date: "2026-05-21"
 | 6 | `06-project-constitution.md` | Project Constitution — architecture philosophy, layered BE/FE, testing strategy, DX, naming, libraries of choice; detailed coding standards (module structure, controller/service/repository patterns, middleware, DB conventions, component patterns, API client, naming, testing, quality rules, git conventions, AI agent rules) | supporting |
 | 7 | `07-architecture-decisions.md` | ADR 001 (Shared DTO), ADR 002 (Repository Triad), Promise Exception Registry, PDR/SDR hierarchy, engineering practices | supporting |
 | 8 | `08-documentation-guidelines.md` | Documentation types, general guidelines, contribution docs philosophy | supporting |
+| 9 | `09-export-boilerplate.md` | Export folder structure (`src/`), agent layout conventions, adding new agents | PRIMARY |
+| 10 | `10-project-goal.md` | Project goal, context, problem, Archiver agent overview, design principles, scope boundaries | PRIMARY |
 
 ## Cross-Cutting Items
 
@@ -56,5 +58,5 @@ verified_date: "2026-05-21"
 - Every folder must have _index.md. Underscore prefix keeps it sorted to top
 - Editorial pipeline: bmad-editorial-review-prose → bmad-editorial-review-structure → bmad-shard-doc (conditional >500 lines) → bmad-index-docs → bmad-distillator (optional)
 - Brownfield strategy: Surgical Strike — new files follow new rules, legacy files get migration tickets
-- Sections 01-05 from final-plan.md distillate. Sections 06-08 preserved from earlier project-plan source-of-truth.
+- Sections 01-05 from final-plan.md distillate. Sections 06-08 preserved from earlier project-plan source-of-truth. Sections 09-10 added during agent build (Archiver documentation orchestrator).
 - **Planning must reference this document first** before creating any new docs, architecture, or implementation.
