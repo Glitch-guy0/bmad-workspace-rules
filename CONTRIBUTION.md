@@ -30,6 +30,7 @@ This is a skill repo containing resources for bmad skill generation
 
 - src
   - SKILL.md
+  - customize.toml  (where user based customization lives)
   - agents
     - sub-agent1
       - sub-agent1.md
