@@ -26,7 +26,7 @@ verified_date: ""
 - Distilled from `final-plan.md` (34,765 source tokens), a living documentation framework for products from MVP to year 5+. Describes layered documentation model, two-repo product/engineering system, decision-tracking hierarchy, and BMAD skill automation.
 - Supporting sources: brainstorming session, research backlog, ADRs, engineering docs, documentation guidelines.
 - All processes, templates, rules, file structures, and conventions preserved factually. Prose elaboration removed.
-- Split into 10 sections covering framework, repo architecture, NFR/debt/indexing, decision-making hierarchy, BMAD skill setup, project constitution, ADRs, documentation guidelines, export boilerplate structure, and project goal.
+- Split into 10 sections covering framework, repo architecture, NFR/debt/indexing, decision-making hierarchy, BMAD skill architecture with four operations, project constitution, ADRs, documentation guidelines, export boilerplate structure, and project goal.
 
 ## Section Manifest
 
@@ -36,7 +36,7 @@ verified_date: ""
 | 2 | `02-repo-agent-structure.md` | Two-repo architecture, DTO handoffs, product/dev file trees, agent flow, stress test, naming conventions, cross-repo doc map | PRIMARY |
 | 3 | `03-nfr-tech-debt-indexing.md` | NFR patterns/flows, tech debt (accepted/postponed), file indexing system (headers, indexes, link chain, agent nav modes) | PRIMARY |
 | 4 | `04-decision-making-org-flow.md` | PDR & Product Research Doc, three-tier org (VP/PM/Senior Dev), handoff documents, feedback loops, strategic layer structure, SDR | PRIMARY |
-| 5 | `05-bmad-skill-setup-slice.md` | BMAD skill internal structure, INIT setup, submodule/single-repo options, Sync decision layer, vertical slice planning, three operations (INIT/VALIDATE/SYNC) | PRIMARY |
+| 5 | `05-bmad-skill-setup-slice.md` | BMAD skill architecture, four operations (INIT/VALIDATE/SYNC/UPDATE), repo options, decision sync, vertical slice planning, workflow rules | PRIMARY |
 | 6 | `06-project-constitution.md` | Project Constitution — architecture philosophy, layered BE/FE, testing strategy, DX, naming, libraries of choice; detailed coding standards (module structure, controller/service/repository patterns, middleware, DB conventions, component patterns, API client, naming, testing, quality rules, git conventions, AI agent rules) | supporting |
 | 7 | `07-architecture-decisions.md` | ADR 001 (Shared DTO), ADR 002 (Repository Triad), Promise Exception Registry, PDR/SDR hierarchy, engineering practices | supporting |
 | 8 | `08-documentation-guidelines.md` | Documentation types, general guidelines, contribution docs philosophy | supporting |
@@ -56,6 +56,7 @@ verified_date: ""
 - All documents open with YAML frontmatter: slug, type, status, owner, created, updated, upstream, downstream
 - Three DTOs: DTO 1 (Milestone Confirmation, product→dev), DTO 2 (Implementation Report, dev→product), DTO 3 (NFR Proposal, dev→product)
 - Every folder must have _index.md. Underscore prefix keeps it sorted to top
+- Repo-update operations use a `_repo-update-task-list.md` temp file at project root for section allocation and session continuity
 - Editorial pipeline: bmad-editorial-review-prose → bmad-editorial-review-structure → bmad-shard-doc (conditional >500 lines) → bmad-index-docs → bmad-distillator (optional)
 - Brownfield strategy: Surgical Strike — new files follow new rules, legacy files get migration tickets
 - Sections 01-05 from final-plan.md distillate. Sections 06-08 preserved from earlier project-plan source-of-truth. Sections 09-10 added during agent build (Archiver documentation orchestrator).

@@ -1,19 +1,16 @@
-# BMAD Skill, Project Setup & Vertical Slice
-
-BMAD skill internal structure, INIT project setup, two repo options, Sync decision layer, vertical slice planning, and the three operations (INIT/VALIDATE/SYNC).
+# BMAD Skill Architecture & Operations Reference
 
 ## The BMAD Skill
 
-- Workflow tooling lives inside bmad-method official skills folder as one large skill. Not a separate repo
-- Contains: sub-agents, steps, scripts, tracking CSVs, templates
+Workflow tooling lives inside bmad-method official skills folder as one large skill. Not a separate repo.
 
 ### What a Skill Can Contain
 
-- Sub-agents: personal agents each focused on one responsibility, each with own instructions and scope
-- Steps: ordered instructions for a process. Numbered steps agent follows exactly
-- Scripts: executable logic (file generation, validation checks, sync ops). Written as agent-readable instructions or runnable scripts
-- Tracking CSVs: If X then Y tables. Machine-readable rules governing agent behavior without hardcoding into prompts
-- Templates: pre-filled markdown files for every document type. INIT uses these to generate placeholders. Every template includes full header block
+- **Sub-agents**: personal agents each focused on one responsibility, with own instructions and scope
+- **Steps**: ordered instructions for a process, followed exactly by the agent
+- **Scripts**: executable logic (file generation, validation checks, sync ops)
+- **Tracking CSVs**: if-then rule tables governing agent behavior without hardcoding into prompts
+- **Templates**: pre-filled markdown files for every document type, including full header block
 
 ### Skill Internal Structure
 
@@ -41,32 +38,14 @@ bmad-method/skills/product-workflow/
     _index.md, idea.md, milestone.md, requirement.md, nfr.md, nfr-proposal.md, pdr.md, product-research.md, sdr.md, directive.md, stress-test-session.md, milestone-confirmed.md, tech-debt-accepted.md, tech-debt-postponed.md, tdd.md, adr.md, api-contract.md, spike.md, vertical-slice.md, atomic-change-plan.md, test-scenarios.md, progress.md, implementation-report.md
 ```
 
-### workflow-rules.csv Structure
-
-- Format: trigger_type, trigger_condition, action, target_path, notes
-- Rules: idea.status=validated → create milestones/active/[slug]/milestone.md; milestone.status=confirmed → create dto/outgoing/[slug]-confirmed.md + create sign-off-log.md; file_received dto/incoming/[slug]-confirmed.md → scaffold planning folder; file_received dto/incoming/[slug]-report.md → run sync-agent; ADR filed → sync to planning/decisions/arch-[slug].md; PDR filed → sync to implementation/context/pdr-[slug].md; stress_test session.open_items > 0 → block milestone confirmation; vertical_slice vs.status=planned AND next_vs_depends=false → allow ahead planning
-- Agents read CSV before acting. New rules added without changing agent prompts
-
-## Three Operations
+## Four Operations
 
 ### INIT
 
-- When: First-time setup of new product. Who runs: user invokes skill once
-- Does: (1) Asks 4 product brief questions. (2) Generates full planning/ folder tree with prefilled placeholders. (3) Asks submodule or single repo. (4) Creates implementation/ connection. (5) Writes .planning-config.md at root. (6) Outputs checklist of what was created + first suggested action
+- **When:** First-time setup of new product. **Who runs:** User invokes skill once
+- **Does:** (1) Asks 4 product brief questions. (2) Generates full planning/ folder tree with prefilled placeholders. (3) Asks submodule or single repo. (4) Creates implementation/ connection. (5) Writes .planning-config.md at root. (6) Outputs checklist of what was created + first suggested action
 
-### VALIDATE
-
-- When: Before any milestone is confirmed. Who runs: Planning agent (automated) + human sign-off
-- Does: (1) Checks all requirements have AC. (2) Checks all PDRs in accepted state. (3) Checks all stress test sessions have zero open items. (4) Checks all open questions in milestone resolved. (5) Checks scope complete (no TBD in Must Have items). (6) Outputs pass/fail report per check — blocks confirmation if any fail
-
-### SYNC
-
-- When: After milestone ships, after any ADR/PDR filed, or manual invocation. Who runs: Sync agent
-- Does: (1) Scans both repos for new decisions since last sync. (2) Pushes ADRs and infra decisions → planning/decisions/. (3) Pushes PDRs and directives → implementation/dev-planning/context/. (4) Rebuilds all _index.md files. (5) Validates all file headers. (6) Updates evolution-timeline.md and current-state-map.md if affected. (7) Writes sync-report.md with issues. (8) Updates last-sync timestamp
-
-## Initial Project Setup (INIT)
-
-### Step by Step
+#### Step by Step
 
 1. User creates one repo: [product-name]-planning (planning repo by default, no implementation code)
 2. User invokes product-workflow skill: INIT → agent reads init-steps.md
@@ -75,39 +54,59 @@ bmad-method/skills/product-workflow/
 5. Agent asks: How to connect implementation codebase? Option A (Submodule) or Option B (Git Workflow single repo)
 6. Both options result in same logical layout: planning/ and implementation/ at same level
 
-## Two Repo Options
+#### Two Repo Options
 
-### Option A — Submodule
+| | Option A — Submodule | Option B — Git Workflow |
+|---|---|---|
+| **Choose when** | Teams need separate access control | Solo developer or small team |
+| **Structure** | [product-name]-planning/ (git repo) with planning/ + implementation/ (git submodule) | [product-name]/ (single git repo) with planning/ + implementation/ |
+| **INIT creates** | .gitmodules, implementation/ mount point | planning/, implementation/, implementation/dev-planning/, .planning-config.md |
 
-- [product-name]-planning/ (git repo) with planning/ (full framework) + implementation/ (git submodule → [product-name] repo)
-- Choose when: teams want separate access control. Senior devs in impl repo without planning access; PM in planning repo without codebase
-- INIT creates: .gitmodules, implementation/ mount point. Agent notes DTOs written to planning/dto/
+#### End State (logical layout, both options)
 
-### Option B — Git Workflow (Single Repo)
+| Domain | Contents |
+|--------|----------|
+| `planning/` | strategy/ (directives/SDRs/research), product/ (brief/timeline/state), ideas/, milestones/ (active/confirmed/completed), feature-index/, nfr-proposals/, dto/, reports/ |
+| `implementation/` | source code + dev-planning/ (planning/TDDs/ADRs/spikes/contracts/slices), tech-debt/, nfr-proposals/, dto/, reports/ |
 
-- [product-name]/ (single git repo) with planning/ (full framework) + implementation/ (actual codebase with src/, tests/, dev-planning/)
-- Choose when: solo developer or small team. Simpler, no submodule management
-- INIT creates: both planning/ and implementation/ at root, implementation/dev-planning/, .planning-config.md
+### VALIDATE
 
-### End State Structure (logical layout, both options)
+- **When:** Before any milestone is confirmed. **Who runs:** Planning agent (automated) + human sign-off
+- **Does:** (1) Checks all requirements have AC. (2) Checks all PDRs in accepted state. (3) Checks all stress test sessions have zero open items. (4) Checks all open questions in milestone resolved. (5) Checks scope complete (no TBD in Must Have items). (6) Outputs pass/fail report per check — blocks confirmation if any fail
 
-- [root]/planning/: strategy/ (directives/SDRs/research), product/ (brief/timeline/state), ideas/, milestones/ (active/confirmed/completed), feature-index/, nfr-proposals/, dto/, reports/
-- [root]/implementation/: [source code], dev-planning/: planning/ (TDDs/ADRs/spikes/contracts/slices), tech-debt/, nfr-proposals/, dto/, reports/
+### SYNC
 
-## Sync — Decision Layer
+- **When:** After milestone ships, after any ADR/PDR filed, or manual invocation. **Who runs:** Sync agent
+- **Does:** (1) Scans both repos for new decisions since last sync. (2) Pushes ADRs and infra decisions → planning/decisions/. (3) Pushes PDRs and directives → implementation/dev-planning/context/. (4) Rebuilds all _index.md files. (5) Validates all file headers. (6) Updates evolution-timeline.md and current-state-map.md if affected. (7) Writes sync-report.md with issues. (8) Updates last-sync timestamp
 
-Bidirectional decision syncing: architectural and infrastructure decisions flow both ways.
+#### The Decisions Registry
 
-### What Gets Synced
+Reference copies of decisions synced across repos, not source of truth. Source stays in the repo that filed it:
 
-- Implementation → Planning (push): ADRs, infrastructure decisions (hosting/CI/tooling), schema decisions not in TDD, any decision affecting product capabilities
-- Planning → Implementation (push): PDRs (product decisions shaping how engineers build), Strategic Directives (why behind priorities), Scope changes to confirmed milestones, New NFR confirmations
+- **planning/decisions/** (receives from implementation): `_index.md` (all synced decisions, dated, categorized), `arch-[slug].md` (reference copy of ADR from dev side)
+- **implementation/dev-planning/context/** (receives from planning): `_index.md`, `pdr-[slug].md` (reference copy of PDR)
+- Each reference copy carries: slug, type=decision-reference, source path, synced date, summary from receiving team's perspective, impact on this side
 
-### The Decisions Registry
+### UPDATE
 
-- planning/decisions/ (receives from implementation): _index.md (all synced decisions, dated, categorized), arch-[slug].md (reference copy of ADR from dev side)
-- implementation/dev-planning/context/ (receives from planning): _index.md, pdr-[slug].md (reference copy of PDR)
-- Reference copies, not source of truth. Source stays in repo that filed it. Reference copy carries: slug, type=decision-reference, source path in originating repo, synced date, Decision Reference title, Source document path, Summary for this side (written from receiving team perspective), Impact on this side (what changes/constrains/enables)
+- **When:** Skill invoked against an existing repository with user requirements ready. **Who runs:** User-invoked skill
+- **Does:** (1) Divides the whole repo into sections. (2) Creates `_repo-update-task-list.md` with all required context. (3) Prompts user that sections are allocated and ready. (4) After implementing each section, prompts user to commit changes and rerun in a new session. (5) After completion, prompts user to approve deletion of `_repo-update-task-list.md`. (6) On subsequent invocations, checks `_repo-update-task-list.md` to determine if this is a repo-update session
+
+### workflow-rules.csv
+
+Governs agent behavior across all four operations. Agents read the CSV before acting. New rules added without changing agent prompts.
+
+**Format:** `trigger_type`, `trigger_condition`, `action`, `target_path`, `notes`
+
+**Rules:**
+- `idea.status=validated` → create `milestones/active/[slug]/milestone.md`
+- `milestone.status=confirmed` → create `dto/outgoing/[slug]-confirmed.md` + create `sign-off-log.md`
+- `file_received dto/incoming/[slug]-confirmed.md` → scaffold planning folder
+- `file_received dto/incoming/[slug]-report.md` → run sync-agent
+- `ADR filed` → sync to `planning/decisions/arch-[slug].md`
+- `PDR filed` → sync to `implementation/context/pdr-[slug].md`
+- `stress_test session.open_items > 0` → block milestone confirmation
+- `vertical_slice vs.status=planned AND next_vs_depends=false` → allow ahead planning
 
 ## Vertical Slice Plan
 
@@ -131,13 +130,13 @@ Required for every milestone in dev repo before full implementation begins. Enfo
 
 ### Vertical Slice Plan File
 
-- Frontmatter: slug=vs-[n]-[milestone-slug], type=vertical-slice, status (📝 planned/🔨 in-progress/✓ validated/✓ implemented/→ combined with vs-[n]), owner, created/updated, upstream, downstream
+- Frontmatter: `slug=vs-[n]-[milestone-slug]`, `type=vertical-slice`, `status` (planned/in-progress/validated/implemented/combined), owner, created/updated, upstream, downstream
 - Body: Milestone slug, Slice number (VS-[n] of [total]), Combined with (VS-[n] or —), Ahead planning (Enabled/Blocked), What this slice proves (specific design question/risk), User action covered (one specific action start to finish), Layers touched (UI/API/DB/Other — minimum viable per layer), Thin implementation plan (what is built/what is stubbed/what is deferred), Validation gate (specific checks for done), Next slice dependency (VS-[n+1] needs this: Implemented/Validated-only/Independent), Combination note (if combined: which VS + reason)
 
 ### File Location
 
-- implementation/dev-planning/planning/[milestone-slug]/vertical-slices/ (_index.md listing all slices with status/ahead-plan/combined/file, vs-1-[name].md, vs-2-[name].md, vs-3-[name].md)
-- atomic-change-plan.md generated AFTER slices are planned. Test scenarios generated after slices
+- `implementation/dev-planning/planning/[milestone-slug]/vertical-slices/` (`_index.md` listing all slices with status/ahead-plan/combined/file, `vs-1-[name].md`, `vs-2-[name].md`, `vs-3-[name].md`)
+- `atomic-change-plan.md` generated AFTER slices are planned. Test scenarios generated after slices
 
 ### Full Implementation Sequence With Slices
 
