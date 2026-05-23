@@ -9,7 +9,7 @@ Standalone module self-registration. This file is loaded when:
 
 Registers this standalone module into a project. Module identity (name, code, version) comes from `./assets/module.yaml` (sibling to this file). Collects user preferences and writes them to three files:
 
-- **`{project-root}/_bmad/config.yaml`** — shared project config: core settings at root (e.g. `output_folder`, `document_output_language`) plus a section per module with metadata and module-specific values. User-only keys (`user_name`, `communication_language`) are **never** written here.
+- **`{project-root}/_bmad/config.yaml`** — shared project config: core settings at root (e.g. `document_folder`, `document_output_language`) plus a section per module with metadata and module-specific values. User-only keys (`user_name`, `communication_language`) are **never** written here.
 - **`{project-root}/_bmad/config.user.yaml`** — personal settings intended to be gitignored: `user_name`, `communication_language`, and any module variable marked `user_setting: true` in `./assets/module.yaml`. These values live exclusively here.
 - **`{project-root}/_bmad/module-help.csv`** — registers module capabilities for the help system.
 
@@ -36,7 +36,7 @@ Only collect if no core keys exist yet in `config.yaml` or `config.user.yaml`:
 
 - `user_name` (default: BMad) — written exclusively to `config.user.yaml`
 - `communication_language` and `document_output_language` (default: English — ask as a single language question, both keys get the same answer) — `communication_language` written exclusively to `config.user.yaml`
-- `output_folder` (default: `{project-root}/_bmad-output`) — written to `config.yaml` at root, shared across all modules
+- `document_folder` (default: `{project-root}/_bmad-docs`) — written to `config.yaml` at root, shared across all modules
 
 ### Module Config
 
@@ -64,17 +64,17 @@ Run `./scripts/merge-config.py --help` or `./scripts/merge-help-csv.py --help` f
 
 ## Create Output Directories
 
-After writing config, create any output directories that were configured. For filesystem operations only (such as creating directories), resolve the `{project-root}` token to the actual project root and create each path-type value from `config.yaml` that does not yet exist — this includes `output_folder` and any module variable whose value starts with `{project-root}/`. The paths stored in the config files must continue to use the literal `{project-root}` token; only the directories on disk should use the resolved paths. Use `mkdir -p` or equivalent to create the full path.
+After writing config, create any output directories that were configured. For filesystem operations only (such as creating directories), resolve the `{project-root}` token to the actual project root and create each path-type value from `config.yaml` that does not yet exist — this includes `document_folder` and any module variable whose value starts with `{project-root}/`. The paths stored in the config files must continue to use the literal `{project-root}` token; only the directories on disk should use the resolved paths. Use `mkdir -p` or equivalent to create the full path.
 
 If `./assets/module.yaml` contains a `directories` array, also create each listed directory (resolving any `{field_name}` variables from the collected config values).
 
 ### Post-Setup: Output Folder as Agent Workspace
 
-After setup, the agent's `{output-folder}` is available:
-- All generated documentation artifacts (ideas, milestones, planning, reports, etc.) are created under `{output-folder}`.
-- The agent treats `{output-folder}` as its artifact workspace root — scripts scan from there, indexes reference paths relative to it.
-- Config and memory paths (`_bmad/`, sanctum) remain at the real `{project-root}` — they are NOT under the output folder.
-- When referencing paths in responses, use `{output-folder}` as the base for artifact paths to avoid confusion with the real project root.
+After setup, the agent's `{document-folder}` is available:
+- All generated documentation artifacts (ideas, milestones, planning, reports, etc.) are created under `{document-folder}`.
+- The agent treats `{document-folder}` as its artifact workspace root — scripts scan from there, indexes reference paths relative to it.
+- Config and memory paths (`_bmad/`, sanctum) remain at the real `{project-root}` — they are NOT under the document folder.
+- When referencing paths in responses, use `{document-folder}` as the base for artifact paths to avoid confusion with the real project root.
 
 ## Confirm
 

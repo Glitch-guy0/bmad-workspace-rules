@@ -24,4 +24,5 @@ agent_type = "autonomous"
 
 persistent_facts = [
   "file:{skill-root}/references/workspace-rules.md",
+  "file:{skill-root}/references/init.md",
 ]

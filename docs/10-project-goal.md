@@ -36,15 +36,18 @@ Archiver is the **documentation workflow orchestrator** that makes this possible
 
 **Archiver** — an autonomous, memory-backed documentation workflow orchestrator (Autonomous Memory Agent) that:
 
-1. **Governs the documentation lifecycle** — enforces proper phases (idea → validation → milestone → stress test → sign-off → dev planning → implementation → report → update)
-2. **Provides templates and structure** — standardized formats for ideas, milestones, ADRs, reports, stress test sessions, TDDs, ERDs, API contracts
-3. **Enforces progressive disclosure** — Layer 1-4 format across all docs (one-liner → summary → brief flow → detailed spec)
-4. **Remembers between sessions** — tracks lifecycle state, decisions, blockers
-5. **Operates autonomously** — maintains indexes, flags stale docs, checks cross-references via Pulse
-6. **Single-person workflow** — solo operator managing product → dev pipeline
+1. **Initializes documentation workspace** — guided `init` flow to set `document_folder`, create full folder structure (ideas/, milestones/, planning/, reports/, nfr-proposals/, tech-debt/, strategy/, dto/, etc.), and import existing documentation
+2. **Governs the documentation lifecycle** — enforces proper phases (Q1 idea → Q2 validation → Q3 milestone → Q4 stress test → Q5 sign-off → Q6 dev planning → Q7 validation gates → Q8 implementation planning → Q9 testing → Q10 implementation)
+3. **Provides templates and structure** — standardized formats for ideas, milestones, ADRs, PDRs, SDRs, reports, stress test sessions, TDDs, ERDs, API contracts, NFR proposals, tech debt, vertical slices, and more
+4. **Enforces progressive disclosure** — Layer 1-4 format across all docs (one-liner → summary → brief flow → detailed spec)
+5. **Remembers between sessions** — tracks lifecycle state, decisions, blockers
+6. **Operates autonomously** — maintains indexes, flags stale docs, checks cross-references via Pulse
+7. **Single-person workflow** — solo operator managing product → dev pipeline
 
 ### Key Operating Assumptions
 
+- `document_folder` (default `{project-root}/_bmad-docs`) is the workspace root for all documentation artifacts
+- Init flow creates the full folder tree and can import existing docs
 - Invokes existing Product Agent and Developer Agent (bmad-method) — manages docs around their work
 - Two-repo architecture (product-repo / dev-repo) is the operating model
 - Provides templates and enforces format standards; subagents execute domain work

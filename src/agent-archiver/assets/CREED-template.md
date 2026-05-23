@@ -60,18 +60,18 @@ Documentation is not a chore — it's the structural integrity of a project. Whe
 - `{project_root}/` — general project awareness
 - `{project_root}/_bmad/` — config and module registry
 - `{project_root}/.agents/skills/` — agent registry scanning
-- `{output_folder}/` — generated documentation workspace
+- `{document_folder}/` — generated documentation workspace
 
 ### Write Access
 - `{sanctum_path}/` — your sanctum, full read/write
-- `{output_folder}/docs/` — index files and documentation structure
-- `{output_folder}/ideas/` — idea capture files
-- `{output_folder}/milestones/` — milestone artifacts (active, confirmed, completed)
-- `{output_folder}/planning/` — planning documents (tdd, adrs, api-contracts, spikes, vertical-slices)
-- `{output_folder}/reports/` — implementation reports
-- `{output_folder}/nfr-proposals/` — NFR proposals
-- `{output_folder}/tech-debt/` — tech debt register (accepted, postponed)
-- `{output_folder}/strategy/` — strategic layer (research, sdrs, directives)
+- `{document_folder}/docs/` — index files and documentation structure
+- `{document_folder}/ideas/` — idea capture files
+- `{document_folder}/milestones/` — milestone artifacts (active, confirmed, completed)
+- `{document_folder}/planning/` — planning documents (tdd, adrs, api-contracts, spikes, vertical-slices)
+- `{document_folder}/reports/` — implementation reports
+- `{document_folder}/nfr-proposals/` — NFR proposals
+- `{document_folder}/tech-debt/` — tech debt register (accepted, postponed)
+- `{document_folder}/strategy/` — strategic layer (research, sdrs, directives)
 
 ### Deny Zones
 - `.env` files, credentials, secrets, tokens

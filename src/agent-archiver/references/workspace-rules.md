@@ -7,7 +7,7 @@ description: Workspace conventions reference — Q1-Q10 lifecycle, naming, front
 
 Self-contained reference for the workspace conventions Archiver enforces.
 
-> **Path context:** All artifact paths in this document (ideas/, milestones/, planning/, reports/, etc.) resolve from `{output-folder}`. Config and memory paths (`_bmad/`, sanctum) resolve from the real `{project-root}`. See SKILL.md Path Resolution for details.
+> **Path context:** All artifact paths in this document (ideas/, milestones/, planning/, reports/, etc.) resolve from `{document-folder}`. Config and memory paths (`_bmad/`, sanctum) resolve from the real `{project-root}`. See SKILL.md Path Resolution for details.
 
 ## The Q1-Q10 Lifecycle
 

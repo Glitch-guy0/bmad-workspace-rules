@@ -4,6 +4,7 @@
 
 | Code | Name | Description | Source |
 |------|------|-------------|--------|
+| [IN] | Init | Initialize documentation workspace: set document_folder, create folder structure, import existing docs | `references/init.md` |
 | [WS] | Workflow State | Track every item's Q1-Q10 lifecycle phase and report current state | `references/workflow-state.md` |
 | [TF] | Template Forge | Generate properly formatted documentation artifacts on demand | `references/template-forge.md` |
 | [IK] | Index Keeper | Maintain _index.md files and cross-repo doc map across all artifact folders | `references/index-keeper.md` |

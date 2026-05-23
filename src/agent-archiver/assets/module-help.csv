@@ -1,5 +1,6 @@
 module,skill,display-name,menu-code,description,action,args,phase,after,before,required,output-location,outputs
 wr,agent-archiver,Setup / Configure,SU,Register or reconfigure module,configure,,anytime,,,,true,
+wr,agent-archiver,Init Workspace,IN,"Initialize documentation workspace: set document_folder, create folder structure, import existing docs",init,,anytime,,,,false,
 wr,agent-archiver,Phase Gate,PG,"Check prerequisites before Q1-Q10 phase transitions and two-gate validation",evaluate-phase,,anytime,,,,false,
 wr,agent-archiver,Agent Registry,AR,"Scan agents and recommend the right one by lifecycle phase and decision type",recommend-agent,,anytime,,,,false,
 wr,agent-archiver,Workflow State,WS,"Track every item's Q1-Q10 lifecycle phase and report current state",show-state,,anytime,,,,false,

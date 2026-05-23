@@ -86,7 +86,7 @@ def load_json_file(path: str) -> dict:
 
 # Keys that live at config root (shared across all modules)
 _CORE_KEYS = frozenset(
-    {"user_name", "communication_language", "document_output_language", "output_folder"}
+    {"user_name", "communication_language", "document_output_language", "document_folder"}
 )
 
 

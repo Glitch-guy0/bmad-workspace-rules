@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # validate-frontmatter.sh
 # Checks all .md files have required YAML frontmatter fields.
-# Usage: ./validate-frontmatter.sh [output-folder]
+# Usage: ./validate-frontmatter.sh [document-folder]
 # Defaults to current directory if no argument given.
-# All scanned paths (docs/, ideas/, milestones/, etc.) resolve from output-folder.
+# All scanned paths (docs/, ideas/, milestones/, etc.) resolve from document-folder.
 
 set -euo pipefail
 

@@ -3,8 +3,8 @@ type: bmad-distillate
 sources:
   - "../final-plan.md"
   - "../framework.md"
-  - "../_bmad-output/brainstorming/consolidated-session-complete.md"
-  - "../_bmad-output/research/research-complete.md"
+  - "../_bmad-docs/brainstorming/consolidated-session-complete.md"
+  - "../_bmad-docs/research/research-complete.md"
   - "../docs/decisions/adrs-complete.md"
   - "../docs/engineering/engineering-complete.md"
   - "../documentation.md"

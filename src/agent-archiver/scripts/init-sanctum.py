@@ -220,14 +220,14 @@ def main():
 
     # Build variable substitution map
     today = date.today().isoformat()
-    raw_output = config.get("output_folder", "{project-root}/_bmad-output")
+    raw_output = config.get("document_folder", "{project-root}/_bmad-docs")
     resolved_output = raw_output.replace("{project-root}", str(project_root))
     variables = {
         "user_name": config.get("user_name", "friend"),
         "communication_language": config.get("communication_language", "English"),
         "birth_date": today,
         "project_root": str(project_root),
-        "output_folder": resolved_output,
+        "document_folder": resolved_output,
         "sanctum_path": str(sanctum_path),
     }
 

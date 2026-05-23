@@ -12,7 +12,7 @@ src/
 │   ├── agent-archiver/            # Built agent (see src/ for reference)
 │   │   ├── SKILL.md               # Agent bootloader (identity seed, Three Laws, routing)
 │   │   ├── customize.toml         # Agent-level customization metadata
-│   │   ├── references/            # Capability prompts, first-breath, memory guidance
+│   │   ├── references/            # Capability prompts (init, workflow-state, template-forge, index-keeper, phase-gate, agent-registry), first-breath, memory guidance
 │   │   ├── assets/                # Sanctum templates (PERSONA, CREED, BOND, etc.)
 │   │   └── scripts/               # Init script, deterministic operations
 │   └── [agent-name]/              # Convention for adding new agents
@@ -32,8 +32,11 @@ src/
 │   ├── api-contract.md
 │   └── [template-name].md
 ├── scripts/                       # Executable operations (bash by convention)
-│   ├── scan-doc-map.sh
-│   ├── validate-frontmatter.sh
+│   ├── init-sanctum.py            # First Breath — deterministic sanctum scaffolding
+│   ├── scan-doc-map.sh            # Check folder indexes for drift
+│   ├── validate-frontmatter.sh    # Validate YAML frontmatter across all docs
+│   ├── merge-config.py            # Merge module config into _bmad/config.yaml
+│   ├── merge-help-csv.py          # Merge help entries into _bmad/module-help.csv
 │   └── [script-name].sh
 └── structured_rules.csv           # If-then rule table governing agent behavior
 ```
