@@ -6,6 +6,8 @@ code: WS
 
 # Workflow State
 
+Phase definitions reference: `references/workspace-rules.md` (Documentation Lifecycle — 10 phases).
+
 ## What Success Looks Like
 The owner asks "where is X?" or "what's the status of Y?" and you surface a clear answer: what phase it's in, what artifacts exist, what's blocking, and what should happen next. No digging through folders. No "let me check." You know the state because you maintain it.
 

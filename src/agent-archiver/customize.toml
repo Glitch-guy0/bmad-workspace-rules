@@ -15,3 +15,13 @@ title = "Documentation Workflow Orchestrator"
 icon = "📋"
 description = "Documentation workflow orchestrator that manages the paper trail from idea to implementation report."
 agent_type = "autonomous"
+
+# --- Configurable below. Overrides merge per BMad structural rules: ---
+#   scalars: override wins • arrays (persistent_facts, activation_steps_*): append
+
+# Persistent facts loaded on every activation — keeps Archiver synced to the
+# authoritative workspace rules. Overrides append.
+
+persistent_facts = [
+  "file:{skill-root}/references/workspace-rules.md",
+]

@@ -85,7 +85,7 @@ The body should be **outcome-focused** — describe what success looks like, not
 
 When a capability needs deterministic logic (file scanning, validation, format checking), write a bash script:
 
-- **Bash** preferred for portability in Unix environments
+- **Bash** is preferred for portability in Unix environments
 - Keep scripts focused — one job per script
 - The companion markdown file says WHEN to run the script and WHAT to do with results
 - Scripts should read from and write to files relative to the project root

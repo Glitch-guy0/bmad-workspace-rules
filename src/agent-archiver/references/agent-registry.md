@@ -6,6 +6,8 @@ code: AR
 
 # Agent Registry
 
+Agent discovery: `{project-root}/.agents/skills/` (installed skills with SKILL.md frontmatter) + `{project-root}/_bmad/custom/config.toml` (registered agents).
+
 ## What Success Looks Like
 When the owner asks "who should handle this?" or a phase gate requires agent invocation, Archiver knows exactly which agents exist, what they do, and when to recommend them. The owner never has to remember which agent does what.
 

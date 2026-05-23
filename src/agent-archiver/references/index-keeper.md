@@ -6,6 +6,8 @@ code: IK
 
 # Index Keeper
 
+Conventions reference: `references/workspace-rules.md` — file lifecycle, folder conventions, naming rules, frontmatter format, cross-repo doc map concept.
+
 ## What Success Looks Like
 Every folder has a valid `_index.md` that accurately lists its contents. The cross-repo doc map in `docs/_index.md` is current. If something is added, moved, or removed, the indexes reflect it. The owner never hits a folder and wonders what's in it.
 
@@ -59,7 +61,7 @@ Index every folder that has structured documentation content:
 
 ## Cross-Repo Doc Map
 
-The root `docs/_index.md` serves as the cross-repo document map (34 documents across product and dev repos per the conventions in docs/02-repo-agent-structure.md). When updating:
+The root `docs/_index.md` serves as the cross-repo document map. Artifact paths and lifecycle conventions in `references/workspace-rules.md`. When updating:
 
 - Verify each listed document still exists
 - Add new documents that have been created

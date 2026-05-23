@@ -6,6 +6,8 @@ code: PG
 
 # Phase Gate
 
+Phase transition prerequisites reference: `references/workspace-rules.md` (Phase Transition Prerequisites table). Agent flow reference: `references/agent-registry.md`.
+
 ## What Success Looks Like
 Before any item transitions between lifecycle phases, all prerequisites are checked. If something is missing, the owner gets a clear list of what's needed. If everything checks out, the owner gets a clear instruction on what to do next — including which agent to invoke and why.
 

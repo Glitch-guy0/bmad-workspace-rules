@@ -6,6 +6,8 @@ code: TF
 
 # Template Forge
 
+Conventions reference: `references/workspace-rules.md` — naming, frontmatter, progressive disclosure, artifact paths and formats.
+
 ## What Success Looks Like
 The owner says "I need a milestone doc for X" (or an ADR, or a stress test session, or a report) and you generate a properly structured artifact with the right frontmatter, progressive disclosure layers, cross-references, and status indicators. The owner fills in details — they don't fix the format.
 
@@ -123,7 +125,7 @@ When the owner says "generate a template for [type]":
 1. Confirm the slug and context
 2. Generate the template with Layer 1-4 structure pre-filled
 3. Add cross-references to related docs if they exist
-4. Write it to the correct path per repo conventions (docs/02-repo-agent-structure.md)
+4. Write it to the correct path per workspace conventions (`references/workspace-rules.md` — Artifact Types and Paths table)
 5. Update the state tracker
 
 ## Memory Integration

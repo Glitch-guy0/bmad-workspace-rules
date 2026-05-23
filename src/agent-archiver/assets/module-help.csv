@@ -1,0 +1,7 @@
+module,skill,display-name,menu-code,description,action,args,phase,preceded-by,followed-by,required,output-location,outputs
+wr,agent-archiver,Setup / Configure,SU,Register or reconfigure module,configure,,anytime,,,,true,,
+wr,agent-archiver,Phase Gate,PG,Check prerequisites before phase transitions,evaluate-phase,,anytime,,,,false,,
+wr,agent-archiver,Agent Registry,AR,Scan agents and recommend the right one,recommend-agent,,anytime,,,,false,,
+wr,agent-archiver,Workflow State,WS,Track every item's lifecycle phase,show-state,,anytime,,,,false,,
+wr,agent-archiver,Index Keeper,IK,Maintain _index.md files and cross-repo doc map,update-indexes,,anytime,,,,false,,
+wr,agent-archiver,Template Forge,TF,Generate formatted documentation artifacts,generate-template,,anytime,,,,false,,
