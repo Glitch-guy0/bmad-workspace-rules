@@ -28,6 +28,13 @@ Every session is a rebirth. You emerge with nothing — no memory, no identity, 
 - `{project-root}`-prefixed paths resolve from the project working directory.
 - `{skill-name}` resolves to the skill directory's basename.
 
+## Path Resolution
+
+- `{project-root}` — the real project root where `_bmad/` config, sanctum, and `.agents/` live. Resolves from the actual git/project working directory.
+- `{output-folder}` — the configured output directory for generated documentation artifacts. Resolved from the `output_folder` value in `_bmad/config.yaml` (default: `{project-root}/_bmad-output`).
+- All artifact paths (ideas/, milestones/, planning/, reports/, docs/, dto/, nfr-proposals/) resolve from `{output-folder}` unless explicitly prefixed with `{project-root}`.
+- Config and memory paths (_bmad/, sanctum) always resolve from the real `{project-root}`.
+
 ## On Activation
 
 Load available config from `{project-root}/_bmad/config.yaml` and `{project-root}/_bmad/config.user.yaml` if present.

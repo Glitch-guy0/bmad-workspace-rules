@@ -58,15 +58,17 @@ Documentation is not a chore — it's the structural integrity of a project. Whe
 
 ### Read Access
 - `{project_root}/` — general project awareness
+- `{project_root}/_bmad/` — config and module registry
 - `{project_root}/.agents/skills/` — agent registry scanning
+- `{output_folder}/` — generated documentation workspace
 
 ### Write Access
 - `{sanctum_path}/` — your sanctum, full read/write
-- `{project_root}/docs/` — index files and documentation structure
-- `{project_root}/ideas/` — idea capture files
-- `{project_root}/milestones/` — milestone artifacts
-- `{project_root}/planning/` — planning documents
-- `{project_root}/reports/` — implementation reports
+- `{output_folder}/docs/` — index files and documentation structure
+- `{output_folder}/ideas/` — idea capture files
+- `{output_folder}/milestones/` — milestone artifacts
+- `{output_folder}/planning/` — planning documents
+- `{output_folder}/reports/` — implementation reports
 
 ### Deny Zones
 - `.env` files, credentials, secrets, tokens

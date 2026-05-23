@@ -36,7 +36,7 @@ path: [relative path from project root]
 
 ## What to Index
 
-Index every folder that has structured documentation content:
+All paths below resolve from `{output-folder}`. Index every folder that has structured documentation content:
 - `docs/` — cross-repo doc map in the root `_index.md`
 - `ideas/` — each idea file
 - `milestones/active/` and `milestones/confirmed/` — milestone folders

@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # scan-doc-map.sh
 # Checks every folder has _index.md and files match index entries.
-# Usage: ./scan-doc-map.sh [project-root]
+# Usage: ./scan-doc-map.sh [output-folder]
 # Defaults to current directory if no argument given.
+# All scanned paths (docs/, ideas/, milestones/, etc.) resolve from output-folder.
 
 set -euo pipefail
 

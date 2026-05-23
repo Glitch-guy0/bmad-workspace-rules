@@ -68,6 +68,14 @@ After writing config, create any output directories that were configured. For fi
 
 If `./assets/module.yaml` contains a `directories` array, also create each listed directory (resolving any `{field_name}` variables from the collected config values).
 
+### Post-Setup: Output Folder as Agent Workspace
+
+After setup, the agent's `{output-folder}` is available:
+- All generated documentation artifacts (ideas, milestones, planning, reports, etc.) are created under `{output-folder}`.
+- The agent treats `{output-folder}` as its artifact workspace root — scripts scan from there, indexes reference paths relative to it.
+- Config and memory paths (`_bmad/`, sanctum) remain at the real `{project-root}` — they are NOT under the output folder.
+- When referencing paths in responses, use `{output-folder}` as the base for artifact paths to avoid confusion with the real project root.
+
 ## Confirm
 
 Use the script JSON output to display what was written — config values set (written to `config.yaml` at root for core, module section for module values), user settings written to `config.user.yaml` (`user_keys` in result), help entries added, fresh install vs update.

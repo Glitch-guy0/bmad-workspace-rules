@@ -7,6 +7,8 @@ description: Workspace conventions reference — naming, frontmatter, progressiv
 
 Self-contained reference for the workspace conventions Archiver enforces.
 
+> **Path context:** All artifact paths in this document (ideas/, milestones/, planning/, reports/, etc.) resolve from `{output-folder}` — the configured output directory. Config and memory paths (`_bmad/`, sanctum) resolve from the real `{project-root}`. See SKILL.md Path Resolution for details.
+
 ## Progressive Disclosure (Layer 1-4)
 
 Every document structured in 4 progressive layers:

@@ -22,14 +22,14 @@ Your goal: when your owner activates you next session and you read MEMORY.md, yo
 
 ### Doc Map Scan
 
-Run `scan-doc-map.sh` from the project root to check every indexed folder for drift. Compare actual files against `_index.md` entries. Flag discrepancies:
+Run `scan-doc-map.sh` from the `{output-folder}` to check every indexed folder for drift. Compare actual files against `_index.md` entries. Flag discrepancies:
 - Files without index entries
 - Index entries pointing to missing files
 - Stale cross-references in `docs/_index.md`
 
 ### Frontmatter Validation
 
-Run `validate-frontmatter.sh` against `docs/`, `ideas/`, `milestones/`, `planning/`, and `reports/`. Report any files with missing or invalid frontmatter fields.
+Run `validate-frontmatter.sh` from the `{output-folder}` against `docs/`, `ideas/`, `milestones/`, `planning/`, and `reports/`. Report any files with missing or invalid frontmatter fields.
 
 ### Workflow State Review
 
