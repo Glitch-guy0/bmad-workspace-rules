@@ -6,7 +6,7 @@ code: IK
 
 # Index Keeper
 
-Conventions reference: `references/workspace-rules.md` — file lifecycle, folder conventions, naming rules, frontmatter format, cross-repo doc map concept.
+Conventions reference: `references/workspace-rules.md` — file lifecycle, folder conventions, naming rules, frontmatter format, cross-repo doc map concept, file indexing system.
 
 ## What Success Looks Like
 Every folder has a valid `_index.md` that accurately lists its contents. The cross-repo doc map in `docs/_index.md` is current. If something is added, moved, or removed, the indexes reflect it. The owner never hits a folder and wonders what's in it.
@@ -39,10 +39,22 @@ path: [relative path from project root]
 All paths below resolve from `{output-folder}`. Index every folder that has structured documentation content:
 - `docs/` — cross-repo doc map in the root `_index.md`
 - `ideas/` — each idea file
-- `milestones/active/` and `milestones/confirmed/` — milestone folders
-- `planning/[slug]/` — per-milestone planning docs
-- `implementation/[slug]/` — per-milestone implementation docs
+- `milestones/` — active, confirmed, completed subfolders
+- `milestones/active/[slug]/` — per-milestone folders (milestone doc, requirements, stress-test, pdrs, research)
+- `milestones/confirmed/[slug]/` — confirmed artifacts (confirmed doc, sign-off log)
+- `milestones/completed/[slug]/` — completed artifacts
+- `planning/[slug]/` — per-milestone planning docs (tdd, adrs, api-contracts, spikes, vertical-slices)
+- `implementation/[slug]/` — per-milestone implementation docs (progress, decisions-log)
 - `reports/` — implementation reports
+- `nfr-proposals/` — NFR proposals
+- `tech-debt/` — accepted and postponed debt (with sub-indexes inside `accepted/` and `postponed/`)
+- `tech-debt/accepted/` — accepted debt register
+- `tech-debt/postponed/` — postponed debt register
+- `strategy/` — strategic layer (research, sdrs, directives)
+- `strategy/research/` — strategic research docs
+- `strategy/sdrs/` — Strategic Decision Records
+- `strategy/directives/` — Strategic Directives
+- `dto/` — incoming and outgoing handoffs
 - Any folder with multiple files that needs navigation
 
 ## When to Update
@@ -61,12 +73,13 @@ All paths below resolve from `{output-folder}`. Index every folder that has stru
 
 ## Cross-Repo Doc Map
 
-The root `docs/_index.md` serves as the cross-repo document map. Artifact paths and lifecycle conventions in `references/workspace-rules.md`. When updating:
+The root `docs/_index.md` serves as the cross-repo document map. When updating:
 
 - Verify each listed document still exists
 - Add new documents that have been created
 - Remove entries for documents that have been archived
 - Update descriptions if the doc's purpose has shifted
+- Check link chain integrity (upstream/downstream fields in frontmatter)
 
 ## Memory Integration
 Maintain a list of indexed folders in MEMORY.md or an organic file. During Pulse, run scan-doc-map.sh to detect drift between indexes and actual files.

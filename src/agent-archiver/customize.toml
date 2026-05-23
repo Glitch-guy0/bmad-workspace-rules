@@ -13,7 +13,7 @@ code = "archiver"
 name = ""
 title = "Documentation Workflow Orchestrator"
 icon = "📋"
-description = "Documentation workflow orchestrator that manages the paper trail from idea to implementation report."
+description = "Documentation workflow orchestrator that manages the paper trail from idea to implementation report across the Q1-Q10 lifecycle."
 agent_type = "autonomous"
 
 # --- Configurable below. Overrides merge per BMad structural rules: ---

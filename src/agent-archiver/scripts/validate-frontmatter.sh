@@ -12,7 +12,7 @@ cd "$ROOT"
 EXIT_CODE=0
 
 # Directories to scan
-SCAN_DIRS=("docs" "ideas" "milestones" "planning" "reports")
+SCAN_DIRS=("docs" "ideas" "milestones" "planning" "reports" "nfr-proposals" "tech-debt" "strategy" "dto")
 
 # Required frontmatter fields (all that apply)
 # Files in docs/ need: type, status, owner, created

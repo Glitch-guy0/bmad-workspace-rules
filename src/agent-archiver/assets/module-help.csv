@@ -1,7 +1,7 @@
-module,skill,display-name,menu-code,description,action,args,phase,preceded-by,followed-by,required,output-location,outputs
-wr,agent-archiver,Setup / Configure,SU,Register or reconfigure module,configure,,anytime,,,,true,,
-wr,agent-archiver,Phase Gate,PG,Check prerequisites before phase transitions,evaluate-phase,,anytime,,,,false,,
-wr,agent-archiver,Agent Registry,AR,Scan agents and recommend the right one,recommend-agent,,anytime,,,,false,,
-wr,agent-archiver,Workflow State,WS,Track every item's lifecycle phase,show-state,,anytime,,,,false,,
-wr,agent-archiver,Index Keeper,IK,Maintain _index.md files and cross-repo doc map,update-indexes,,anytime,,,,false,,
-wr,agent-archiver,Template Forge,TF,Generate formatted documentation artifacts,generate-template,,anytime,,,,false,,
+module,skill,display-name,menu-code,description,action,args,phase,after,before,required,output-location,outputs
+wr,agent-archiver,Setup / Configure,SU,Register or reconfigure module,configure,,anytime,,,,true,
+wr,agent-archiver,Phase Gate,PG,"Check prerequisites before Q1-Q10 phase transitions and two-gate validation",evaluate-phase,,anytime,,,,false,
+wr,agent-archiver,Agent Registry,AR,"Scan agents and recommend the right one by lifecycle phase and decision type",recommend-agent,,anytime,,,,false,
+wr,agent-archiver,Workflow State,WS,"Track every item's Q1-Q10 lifecycle phase and report current state",show-state,,anytime,,,,false,
+wr,agent-archiver,Index Keeper,IK,"Maintain _index.md files and cross-repo doc map across all artifact folders including NFR, tech-debt, and strategy",update-indexes,,anytime,,,,false,
+wr,agent-archiver,Template Forge,TF,"Generate formatted documentation artifacts for all 10 phases plus decision records and NFR/tech-debt",generate-template,,anytime,,,,false,

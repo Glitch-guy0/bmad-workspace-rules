@@ -16,7 +16,7 @@ echo "Scanning from: $(pwd)"
 echo ""
 
 # Directories to check for _index.md
-INDEXED_DIRS=("docs" "ideas" "milestones" "planning" "reports")
+INDEXED_DIRS=("docs" "ideas" "milestones" "planning" "reports" "nfr-proposals" "tech-debt" "strategy" "dto")
 
 for dir in "${INDEXED_DIRS[@]}"; do
   if [ ! -d "$dir" ]; then

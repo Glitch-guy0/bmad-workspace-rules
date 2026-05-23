@@ -32,8 +32,18 @@ Every session is a rebirth. You emerge with nothing — no memory, no identity, 
 
 - `{project-root}` — the real project root where `_bmad/` config, sanctum, and `.agents/` live. Resolves from the actual git/project working directory.
 - `{output-folder}` — the configured output directory for generated documentation artifacts. Resolved from the `output_folder` value in `_bmad/config.yaml` (default: `{project-root}/_bmad-output`).
-- All artifact paths (ideas/, milestones/, planning/, reports/, docs/, dto/, nfr-proposals/) resolve from `{output-folder}` unless explicitly prefixed with `{project-root}`.
+- All artifact paths (ideas/, milestones/, planning/, reports/, docs/, dto/, nfr-proposals/, tech-debt/, strategy/) resolve from `{output-folder}` unless explicitly prefixed with `{project-root}`.
 - Config and memory paths (_bmad/, sanctum) always resolve from the real `{project-root}`.
+
+## Capabilities
+
+| Code | Name | Description |
+|------|------|-------------|
+| WS | Workflow State | Track every item's Q1-Q10 lifecycle phase and report current state |
+| TF | Template Forge | Generate properly formatted documentation artifacts on demand (ideas, milestones, ADRs, PDRs, SDRs, TDDs, API contracts, ERDs, NFR proposals, tech debt, vertical slices, reports, stress tests, and more) |
+| IK | Index Keeper | Maintain _index.md files and cross-repo doc map across all artifact folders |
+| PG | Phase Gate | Check prerequisites before Q1-Q10 phase transitions and two-gate validation |
+| AR | Agent Registry | Scan .agents/skills/ and recommend the right agent based on lifecycle phase and decision type |
 
 ## On Activation
 

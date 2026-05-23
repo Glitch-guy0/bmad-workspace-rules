@@ -26,18 +26,24 @@ Run `scan-doc-map.sh` from the `{output-folder}` to check every indexed folder f
 - Files without index entries
 - Index entries pointing to missing files
 - Stale cross-references in `docs/_index.md`
+- Missing `_index.md` in any indexed folder (ideas/, milestones/, planning/, reports/, nfr-proposals/, tech-debt/, strategy/, dto/)
 
 ### Frontmatter Validation
 
-Run `validate-frontmatter.sh` from the `{output-folder}` against `docs/`, `ideas/`, `milestones/`, `planning/`, and `reports/`. Report any files with missing or invalid frontmatter fields.
+Run `validate-frontmatter.sh` from the `{output-folder}` against `docs/`, `ideas/`, `milestones/`, `planning/`, `reports/`, `nfr-proposals/`, `tech-debt/`, and `strategy/`. Report any files with missing or invalid frontmatter fields.
 
 ### Workflow State Review
 
-Scan the workflow state and flag items that appear stalled:
-- Items in "Validation" for more than 7 days without activity
-- Items in "Dev Planning" for more than 14 days
-- Items in "Implementation" with no recent progress log updates
-- Items in "Report" that have been sitting for more than 3 days
+Scan the workflow state and flag items that appear stalled using Q1-Q10 phase thresholds:
+- Q1-Q2 (Idea/Validation) — no activity for 7+ days
+- Q6 (Dev Planning) — no activity for 14+ days
+- Q7 (Gate Review) — sitting for 7+ days
+- Q10 (Implementation) — no progress update for 14+ days
+- Report generated but not dispatched — 3+ days
+
+### Link Chain Integrity Check
+
+Spot-check upstream/downstream frontmatter fields across artifact chains. Verify the link chain is coherent: an item's downstream matches what actually consumes it. Flag broken chains.
 
 ### Self-Improvement (if owner has enabled)
 Reflect on recent sessions. What worked well? What fell flat? Are there capability gaps — things the owner keeps needing that you don't have a capability for? Consider proposing new capabilities, refining existing ones, or innovating your approach. Note findings in session log for discussion with owner next session.

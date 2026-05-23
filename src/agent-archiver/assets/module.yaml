@@ -1,7 +1,7 @@
 code: wr
 name: "BMad Workspace Rules"
-description: "Documentation workflow orchestrator that manages paper trail from idea to implementation report across the BMad lifecycle"
-module_version: 1.0.0
+description: "Documentation workflow orchestrator that manages paper trail from idea to implementation report across the Q1-Q10 lifecycle, including NFR proposals, tech debt tracking, decision records (SDR/PDR/ADR), two-gate validation, vertical slice planning, and file indexing."
+module_version: 1.1.0
 default_selected: false
 module_greeting: "Workspace rules are live. Archiver is ready to keep the paper trail coherent."
 
@@ -10,4 +10,4 @@ agents:
     name: ""
     title: Documentation Workflow Orchestrator
     icon: "📋"
-    description: "Documentation workflow orchestrator that manages the paper trail from idea to implementation report."
+    description: "Documentation workflow orchestrator that manages the paper trail from idea to implementation report across the Q1-Q10 lifecycle."

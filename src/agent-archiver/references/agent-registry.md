@@ -29,13 +29,32 @@ For each discovered agent, track:
 
 ## When to Recommend
 
+### By Q1-Q10 Phase
+
 | Situation | Recommendation |
 |-----------|---------------|
-| Idea validated and ready to structure | "This is ready for the Product Agent to structure into a milestone." |
-| Milestone signed off, needs dev work | "Documents ready — invoke the Developer Agent for technical design." |
-| Implementation done, needs reporting | "Ask the Developer Agent to generate the Implementation Report." |
-| Report received, product docs need updating | "The report is in — invoke the Product Agent to update docs." |
-| General question about agents | List available agents with their descriptions |
+| Q1 idea ready for validation | "Ready for Product Agent to explore validity." |
+| Q3 milestone structured, needs stress test | "Requirements have AC — invoke the Product Agent for stress testing." |
+| Q5 milestone signed off, needs dev work | "DTO 1 dispatched — invoke the Developer Agent for technical design." |
+| Q6 dev planning complete, needs Gate 2 review | "TDD and ADRs ready — technical design review needed." |
+| Q8 implementation planning complete | "Vertical slices planned — Developer Agent can begin implementation." |
+| Q10 implementation done, needs report | "Ask the Developer Agent to generate the Implementation Report." |
+| Report received, needs product doc update | "The report is in — invoke the Product Agent to update docs." |
+
+### By Decision Record Type
+
+| Situation | Recommendation |
+|-----------|---------------|
+| Strategic question (market, competition) | "This needs an SDR — strategic level." |
+| Product question (user behavior, scope) | "This needs a PDR — product level." |
+| Technical question (architecture, trade-offs) | "This needs an ADR — technical level." |
+
+### By NFR / Tech Debt
+
+| Situation | Recommendation |
+|-----------|---------------|
+| NFR proposed → needs review | "NFR proposal ready for PM review." |
+| Tech debt accepted → needs ADR | "Tech debt accepted — file an ADR documenting the trade-off." |
 
 ## Registration Format for Config
 

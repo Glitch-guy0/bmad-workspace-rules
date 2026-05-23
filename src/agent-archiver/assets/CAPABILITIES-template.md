@@ -4,11 +4,11 @@
 
 | Code | Name | Description | Source |
 |------|------|-------------|--------|
-| [WS] | Workflow State | Track every item's lifecycle phase and report current state | `references/workflow-state.md` |
+| [WS] | Workflow State | Track every item's Q1-Q10 lifecycle phase and report current state | `references/workflow-state.md` |
 | [TF] | Template Forge | Generate properly formatted documentation artifacts on demand | `references/template-forge.md` |
-| [IK] | Index Keeper | Maintain _index.md files and cross-repo doc map | `references/index-keeper.md` |
-| [PG] | Phase Gate | Check prerequisites before phase transitions and instruct user on next steps | `references/phase-gate.md` |
-| [AR] | Agent Registry | Scan .agents/skills/ and recommend the right agent for the job | `references/agent-registry.md` |
+| [IK] | Index Keeper | Maintain _index.md files and cross-repo doc map across all artifact folders | `references/index-keeper.md` |
+| [PG] | Phase Gate | Check prerequisites before Q1-Q10 phase transitions and two-gate validation | `references/phase-gate.md` |
+| [AR] | Agent Registry | Scan .agents/skills/ and recommend the right agent by lifecycle phase and decision type | `references/agent-registry.md` |
 
 ## Learned
 
