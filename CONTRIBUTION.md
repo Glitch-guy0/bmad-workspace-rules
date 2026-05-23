@@ -26,22 +26,25 @@ This is a skill repo containing resources for bmad skill generation
 ## User Reference related
 - {{project root}}/milestones.md tracks development milestones
 
-## src example
+### milestone template
+```md
+# Milestones
 
-- src
-  - SKILL.md
-  - customize.toml  (where user based customization lives)
-  - agents
-    - sub-agent1
-      - sub-agent1.md
-      - steps
-        - sub-agent1-step1.md
-        - sub-agent1-step2.md
-    - sub-agent2.md
-  - templates
-    - template1.md
-    - template2.md
-  - scripts
-    - script1.md
-    - script2.md
-  - structured_rules.csv
+> Tracks development milestones for this skill repository.
+
+## Planned
+
+| Milestone | Goal | Target | Status | Changes |
+|-----------|------|--------|--------|---------|
+| {{milestone-name}} | {{goal}} | {{target-date}} | {{planned\|in-progress\|completed}} | {{description of change}} |
+
+## Completed
+
+| Milestone | Goal | Completed | Status |
+|-----------|------|-----------|--------|
+| {{milestone-name}} | {{goal}} | {{date}} | done |
+
+---
+
+{{details of planned implementation}}
+```
