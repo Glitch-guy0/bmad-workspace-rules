@@ -2,7 +2,7 @@
 
 ## The BMAD Skill
 
-Workflow tooling lives inside bmad-method official skills folder as one large skill. Not a separate repo.
+Workflow tooling lives inside the bmad-method official skills folder as one large skill. Not a separate repo.
 
 ### What a Skill Can Contain
 

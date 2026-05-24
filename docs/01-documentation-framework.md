@@ -79,7 +79,7 @@ Begins after Milestone Confirmation sign-off. Answers "how" (product docs answer
 
 ## Q7 — Validation & Sign-Off
 
-Two separate review gates before implementation begins. Bug caught in design doc = 15min fix; after implementation = days.
+Two separate review gates before implementation begins. Bug caught in design doc = 15 min fix; bug found after implementation = days.
 
 ### Gate 1 — Milestone Confirmation Review (product-level, before TDD)
 
@@ -119,7 +119,7 @@ Three layers: Options & Brainstorm → Implementation Breakdown → Timeline.
 
 ## Q9 — Testing Scenarios & Atomic Code Changes
 
-Write tests BEFORE implementation (defines target; after-implementation tests rationalize what was built).
+Write tests BEFORE implementation (defines target; tests written after validate what was built).
 
 ### Testing Scenarios (3 levels per acceptance criterion)
 

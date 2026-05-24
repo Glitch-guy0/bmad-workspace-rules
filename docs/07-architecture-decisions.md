@@ -90,7 +90,7 @@ This section covers Architecture Decision Records and Published Engineering Prac
 
 ## PDR — Product Decision Record
 - Product-level equivalent of ADR; for decisions that shape requirements rather than define them
-- Captures decisions previously invisible (made in Slack/meetings, quietly assumed in milestone doc)
+- Captures decisions that were previously invisible (made in Slack/meetings, quietly assumed in milestone doc)
 - Examples: "Should export be a feature or a standalone product?", "Onboarding: wizard or blank state?", "Which user segment first?"
 - Format: PDR-[n]: Title | Status (Proposed/Accepted/Superseded) | Date | Raised by | Affects | QUESTION | CONTEXT | RESEARCH DONE | OPTIONS CONSIDERED (A/B with pros/cons) | DECISION | TRADE-OFFS ACCEPTED | OUTCOME (filled post-ship)
 - Filed at: `product-repo/milestones/active/[slug]/pdrs/PDR-[n]-[title].md`

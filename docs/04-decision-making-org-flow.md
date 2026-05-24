@@ -12,7 +12,7 @@ Decision-making symmetry (PDR as product-level ADR), three-tier organizational h
 
 ### Product Research Doc
 
-- Needed when: user behavior unknown, do users actually want this?, competitive gap analysis, segment prioritization, what problem are we really solving?
+- Needed when: is user behavior unknown?, do users actually want this?, is competitive analysis needed?, which segment to prioritize?, what problem are we really solving?
 - Frontmatter: slug=research-[slug], type=product-research, status (🔍 in-progress/✓ complete), owner, created/updated, upstream, downstream (pdrs/PDR-[n]-[title])
 - Body: Time-box, Feeds into PDR/milestone, Question (one sentence), Method (user interviews/data analysis/competitor review/support ticket analysis/desk research), Findings (structured, not prose dump), Implications, Recommendation (what research suggests, not yet a decision)
 - File location: milestones/active/[milestone-slug]/research/research-[slug].md
