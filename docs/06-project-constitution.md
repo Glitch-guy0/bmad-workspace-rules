@@ -86,6 +86,13 @@ This section covers Project Constitution, Architecture Standards, and detailed C
 - Indexes on foreign key columns
 - Cascade deletes on all relations
 
+### Prisma Multi-File Schema
+- Prisma v6.7.0+ required for GA multi-file support
+- Layout: `backend/prisma/{schema.prisma (generator+datasource only), models/{user,auth,...}.prisma, migrations/}`
+- Config: `package.json: { "prisma": { "schema": "./prisma" } }` or prisma.config.ts (v7+)
+- Commands: `prisma validate`, `prisma generate`, `prisma migrate dev --schema ./prisma`
+- Rules: schema.prisma must sit at configured schema root; do not split datasource without verifying version; avoid duplicate definitions
+
 ### Cross-cutting Structure
 - `middleware/`, `exceptions/`, `utils/`, `types/`
 
@@ -133,6 +140,12 @@ This section covers Project Constitution, Architecture Standards, and detailed C
 - Display errors with `role="alert"`, red color
 - Frontend exception class (optional)
 
+### TanStack-First Frontend
+- Server state: TanStack Query; Routing: TanStack Router (SPA) or Next App Router; Tables: TanStack Table; Client UI: Redux Toolkit or React state
+- Greenfield checklist: QueryClientProvider, API hooks under src/lib/api/ with query keys, no useEffect+fetch, Redux slices must not store server entities, TanStack Table before MUI DataGrid
+- Brownfield: new files TanStack-only; legacy Redux-server code → migration ticket; ADR for third-party widget exceptions
+- Query key convention: `{ users: ['users'], user: (id) => ['users', id] }`
+
 ## Microservices Architecture
 - Create separate service when: different scaling (CPU/memory-intensive), different runtime (Python for ML), different security boundaries, team ownership separation
 - Service structure: `src/{routes, workflows, utils}/`, `server.ts`
@@ -165,6 +178,17 @@ This section covers Project Constitution, Architecture Standards, and detailed C
 - Use `jest.mocked()` for type safety
 - NEVER call real DBs, JWT, bcrypt, S3, or fs in tests
 - Coverage targets: service 90%+, routes 90%+, middleware 90%+, components 80%+
+
+### k6 Load Testing Grid
+
+| Layer | Protocol | Metrics |
+|-------|----------|---------|
+| Backend | HTTP — latency, throughput, error rate | p95 < 500ms |
+| Microservices | Protocol — SLOs, timeouts | Per-service thresholds |
+| Frontend | Browser module — web vitals, render, critical flows | LCP < 2.5s |
+
+- Layout: `testing/load/{shared/config.js + thresholds.js, backend/*.js, microservices/*.js, frontend/*.browser.js}`
+- NPM scripts: load:backend, load:frontend, load:all
 
 ### TSDoc Conventions
 
@@ -219,6 +243,12 @@ async function createUser(
 - DO: Write TSDoc for every function (see TSDoc Conventions above)
 - DO NOT: Business logic in controllers, console.log in production, cross-imports between services, skip tests, commit secrets, use `.then()` chains, change AppResponse envelope format, add TODO/placeholder code, create one exception file per error type, commit any function without TSDoc
 
+### Utility Taxonomy
+- Start atomic, promote at ≥3 related functions; domain over generic; no business logic; max class size <150 lines
+- Directory: `src/utils/{datetime/{formatIso, parseSafe, DateTimeUtils}, auth/password.utils.ts}`
+- Naming: atomic (formatIso.ts), grouped (DateTimeUtils.ts), domain (auth/password.utils.ts)
+- Tests: co-located *.test.ts per utility file
+
 ### Git Conventions
 - Branch: `<type>/<short-description>` — types: feat, fix, chore, refactor, docs
 - Commit: `<type>(<scope>): <description>` — scopes: backend, frontend, root, docs
@@ -243,6 +273,7 @@ async function createUser(
 - Config safety: `.configignore` defines sensitive patterns, Husky auto-generates `.example` files pre-commit
 - Hot reload: Nodemon for backend, Next.js fast refresh for frontend, Docker volume mounts
 - Volta for Node version pinning (node 24.13.0, npm 10.5.0)
+- Mirror Docs Cartographer: code paths → docs/ mirrored structure; post-commit: git diff HEAD~1 → filter (.ts, .tsx, .prisma, .js) → create/update mirrors → coverage report; tracked file types: TypeScript, Prisma, k6, config schemas
 
 ## Libraries of Choice
 - Backend: Express 4.18, Prisma 5.x, Zod 3.x, paseto, bcryptjs, Multer, @aws-sdk/client-s3, http-status-codes, Pino, Jest/ts-jest, Supertest

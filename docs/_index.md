@@ -21,27 +21,20 @@ verified_date: ""
 
 > Validated content. Foundation for all forward planning and implementation.
 
-## Orientation
+10 documents covering framework, repo architecture, NFR/debt, decision hierarchy, BMAD skills, constitution, ADRs, doc guidelines, export structure, and project goal.
 
-- Distilled from `final-plan.md` (34,765 source tokens), a living documentation framework for products from MVP to year 5+. Describes layered documentation model, two-repo product/engineering system, decision-tracking hierarchy, and BMAD skill automation.
-- Supporting sources: brainstorming session, research backlog, ADRs, engineering docs, documentation guidelines.
-- All processes, templates, rules, file structures, and conventions preserved factually. Prose elaboration removed.
-- Split into 10 sections covering framework, repo architecture, NFR/debt/indexing, decision-making hierarchy, BMAD skill architecture with four operations, project constitution, ADRs, documentation guidelines, export boilerplate structure, and project goal.
+## Files
 
-## Section Manifest
-
-| # | File | Topic | Priority |
-|---|------|-------|----------|
-| 1 | `01-documentation-framework.md` | Q1-Q10: Idea capture, milestone structure, TDD, ADR, API, ERD, validation gates, implementation planning, testing, definition of done | PRIMARY |
-| 2 | `02-repo-agent-structure.md` | Two-repo architecture, DTO handoffs, product/dev file trees, agent flow, stress test, naming conventions, cross-repo doc map | PRIMARY |
-| 3 | `03-nfr-tech-debt-indexing.md` | NFR patterns/flows, tech debt (accepted/postponed), file indexing system (headers, indexes, link chain, agent nav modes) | PRIMARY |
-| 4 | `04-decision-making-org-flow.md` | PDR & Product Research Doc, three-tier org (VP/PM/Senior Dev), handoff documents, feedback loops, strategic layer structure, SDR | PRIMARY |
-| 5 | `05-bmad-skill-setup-slice.md` | BMAD skill architecture, four operations (INIT/VALIDATE/SYNC/UPDATE), repo options, decision sync, vertical slice planning, workflow rules | PRIMARY |
-| 6 | `06-project-constitution.md` | Project Constitution — architecture philosophy, layered BE/FE, testing strategy, DX, naming, libraries of choice; detailed coding standards (module structure, controller/service/repository patterns, middleware, DB conventions, component patterns, API client, naming, testing, quality rules, git conventions, AI agent rules) | supporting |
-| 7 | `07-architecture-decisions.md` | ADR 001 (Shared DTO), ADR 002 (Repository Triad), Promise Exception Registry, PDR/SDR hierarchy, engineering practices | supporting |
-| 8 | `08-documentation-guidelines.md` | Documentation types, general guidelines, contribution docs philosophy | supporting |
-| 9 | `09-export-boilerplate.md` | Export folder structure (`src/`), agent layout conventions, adding new agents | PRIMARY |
-| 10 | `10-project-goal.md` | Project goal, context, problem, Archiver agent overview, design principles, scope boundaries | PRIMARY |
+- **[01-documentation-framework.md](./01-documentation-framework.md)** — Q1-Q10 product lifecycle from idea capture through implementation and retrospective
+- **[02-repo-agent-structure.md](./02-repo-agent-structure.md)** — Two-repo architecture with DTO handoffs, file trees, and agent lifecycle
+- **[03-nfr-tech-debt-indexing.md](./03-nfr-tech-debt-indexing.md)** — NFR management, tech debt tracking, and four-layer file indexing system
+- **[04-decision-making-org-flow.md](./04-decision-making-org-flow.md)** — PDR/SDR decision hierarchy, three-tier org, and feedback loops
+- **[05-bmad-skill-setup-slice.md](./05-bmad-skill-setup-slice.md)** — BMAD skill operations, skill anatomy, editorial pipeline, and vertical slice planning
+- **[06-project-constitution.md](./06-project-constitution.md)** — Architecture philosophy, BE/FE coding standards, testing, naming, TSDoc, and DX
+- **[07-architecture-decisions.md](./07-architecture-decisions.md)** — Formal ADRs: shared DTO, repository triad, and promise exception registry
+- **[08-documentation-guidelines.md](./08-documentation-guidelines.md)** — Documentation types, general guidelines, and workflow principles
+- **[09-export-boilerplate.md](./09-export-boilerplate.md)** — Export folder structure, agent layout conventions, and adding new agents
+- **[10-project-goal.md](./10-project-goal.md)** — Project charter, Archiver agent overview, design principles, and scope boundaries
 
 ## Cross-Cutting Items
 

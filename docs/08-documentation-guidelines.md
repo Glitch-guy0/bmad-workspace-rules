@@ -13,8 +13,7 @@ This section covers Documentation Guidelines — types of documentation, general
 - CONTRIBUTION.md per repo: rules for coding sessions — how to structure and write code, what to document after code is written
 - Each repo has its own CONTRIBUTION.md explaining scope and rules for that project
 
-## Code Organization Principles
-- Managing written functionality + documenting and managing features
+## Workflow Principles
 - Brain Dump → Project Milestones → Brainstorming workflow
 - Maintain a brainstorming file; consider Linear for tracking
 
@@ -27,19 +26,3 @@ This section covers Documentation Guidelines — types of documentation, general
 - Language-agnostic rules: each file can have rules for different languages but the rules are the same; focus on outcome implementation rather than language-specific packages
 - Package selection: stable, well-known, developer-preferred packages; implementation rules remain same across languages (e.g., logging packages differ between TypeScript and Python but implementation rules are identical)
 
-## Research Topic Outputs Map
-- R-01 → docs/engineering/bmad-skill-anatomy.md
-- R-07 → .agents/skills/bmad-workspace-rules/SKILL.md + customize.toml
-- R-08 → docs/decisions/001-shared-dto-package.md, 002-repository-triad.md
-- R-02 → docs/engineering/prisma-multi-file-schema.md + example prisma/models/
-- R-03 → testing/load/{frontend,backend,microservices}/ scaffold + README
-- R-04 → Frontend scaffold checklist + docs/engineering/frontend-tanstack-first.md
-- R-09 → Mirror docs convention in skill + docs/ layout spec
-- R-06 → docs/decisions/promise-exceptions.md
-
-## Session Management
-- Init one-time setup: init.md + bmad-customize → _bmad/custom/bmad-workspace-rules.toml (Cat #10)
-- Post bmad-dev-story: read git diff HEAD~1, update mirror docs, coverage report, ADRs on deviation (Cat #8, #9)
-- Session log stores undo commands at session end
-- Delta ingress: user adds unstructured notes under Delta queue; run bmad-brainstorming to extend session; mark new frontmatter items as open until ADR, constitution update, or research complete
-- Closing a research topic requires: findings documented, ADR if policy change, or explicit deferral with trigger

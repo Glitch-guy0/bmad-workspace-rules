@@ -108,6 +108,59 @@ Governs agent behavior across all four operations. Agents read the CSV before ac
 - `stress_test session.open_items > 0` → block milestone confirmation
 - `vertical_slice vs.status=planned AND next_vs_depends=false` → allow ahead planning
 
+## Skill Anatomy Reference
+
+### Skill Families
+
+| Family | Pattern | Use Case |
+|--------|---------|----------|
+| Workflow | Thin SKILL.md → workflow.md | Single linear process |
+| Agent | Resolver → persona → menu | Interactive agent with choices |
+| Multi-agent | Orchestrator + agents/*.md | Multiple sub-agents |
+| Builder/meta | Long SKILL.md + references/ + scripts/ | Complex tooling with sub-capabilities |
+
+### Layer Responsibilities
+
+| Layer | Role | Required? |
+|-------|------|-----------|
+| SKILL.md | Entry point, routing | Always |
+| workflow.md | Multi-step orchestration | For complex flows |
+| steps/\*.md | Sequential micro-steps | When workflow needs detail |
+| references/ | Carved prompts | Large skills with independent sections |
+| assets/ | Templates, CSVs | Static data bundled with skill |
+| scripts/ | Deterministic ops | Validation, scanning, generation |
+| agents/ | Subagent prompts | Multi-agent skills |
+| customize.toml | Team overrides | Optional metadata |
+
+### Quality Bar
+- "Would an LLM do this correctly without being told?"
+- Outcome-based instructions over numbered trivia
+
+### Path Conventions
+- Bare paths resolve from skill root
+- `{skill-root}` → skill install directory
+- `{project-root}` → project working directory
+- `{skill-name}` → skill directory basename
+
+### Editorial Pipeline Automation
+- Chain: prose review → structure review → shard (conditional >500 lines) → index → distill (optional)
+- Prose review: auto after braindump or bulk edit; Structure review: auto after prose pass; Shard: conditional; Index: auto per folder; Distill: optional (brainstorm/compression only)
+- Config: editorial_pipeline_enabled, auto_shard_threshold (500), dry_run_mode
+
+### Helper-vs-Writer Skill Dispatcher
+- Unstructured notes → Helper chain
+- Compress brainstorm → Helper (distillator)
+- New API/module tech doc → Writer
+- Unknown brownfield → Writer (generate-project-context)
+- Post-implementation → workspace rules
+- Architecture deviation → ADR
+
+### bmad-workspace-rules Skill (R-07)
+- Package: `.agents/skills/bmad-workspace-rules/` — SKILL.md + customize.toml + references/ + assets/
+- Family: Complex workflow skill with optional customize.toml hooks
+- Activation: bmad-dev-story → bmad-workspace-rules (prepend hook) → resolve customize.toml → load constitution → git diff HEAD~1 → route to mode → deviation check → ADR if needed
+- Config keys: constitution_path, research_index_path, docs_output_path, adr_path, mode (initial-setup|post-commit|re-baseline|surgical-strike), max_files_per_session, yolo_defaults_enabled
+
 ## Vertical Slice Plan
 
 Required for every milestone in dev repo before full implementation begins. Enforced — not optional.

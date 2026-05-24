@@ -66,6 +66,18 @@ Three roles, each with independent research domain and specific decision type.
 - PM → VP: Milestone outcomes, User response post-ship, Escalations (technical constraints hitting strategy), Revised scope signals (research reveals VP assumption wrong)
 - VP → PM (reactive): Strategic re-prioritization, New constraints
 
+## Decision Guardrails (YOLO Safety Interlock)
+
+Before executing destructive or large-scale operations:
+
+- Constitution missing → refuse
+- >N files to change → refuse with recommendation to split
+- Destructive operation → dry-run first (unified diff)
+- Brownfield + no project-context.md → suggest generate-project-context
+- YOLO keyword → skip Q&A with file cap + undo note
+- Pre-flight quiz: max 2 architecture questions, verify constitution path, check git context
+- Dry-run: unified diff + undo block in session log (git checkout + rm commands)
+
 ## Strategic Layer File Structure
 
 ```

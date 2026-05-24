@@ -134,9 +134,3 @@ Non-functional requirements management, tech debt tracking, and the four-layer f
 - Product repo: 43+ files including _index.md at root and every subfolder. Milestone subfolders each have _index.md
 - Developer repo: 40+ files including _index.md at root and every subfolder. Planning, implementation, archive all indexed
 
-### Complete Naming Conventions
-
-- Slugs: kebab-case for all names. nfr slug prefix: nfr-. Tech debt slug prefix: debt-. Feature slug: same as idea slug pattern
-- Index files: always _index.md (underscore prefix sorts to top)
-- Versioning: inside file header only. Version increments logged in sign-off-log.md
-- Status: never in filename. Communicated by folder location (active/confirmed/completed; postponed/nfr-proposals/planning)
