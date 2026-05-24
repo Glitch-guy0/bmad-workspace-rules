@@ -301,7 +301,7 @@ Body: Milestone slug, Slice number, Combined with, Ahead planning, What this sli
 ## Documentation Debt
 
 - Phase 1 (1-2 days): headers everywhere — Layer 1+2 for every existing feature
-- Phase 2 (1-2 weeks): flow diagrams for 20% of features causing 80% of questions/bugs
+- Phase 2 (1-2 weeks): d2lang flow diagrams for 20% of features causing 80% of questions/bugs
 - Phase 3 (ongoing): deep docs on demand — only when actively changing, new engineer confused, bug revealed unknown edge case
 - Never: document stable things nobody touches; dead docs mislead more than no docs
 
@@ -356,10 +356,12 @@ Safety rules for destructive or large-scale operations:
 
 - Lead with status and ownership
 - Collapse detail by default
-- Tables for comparisons, diagrams before prose
+- Tables for comparisons, d2lang diagrams before prose
+- All diagrams authored as `.d2` files rendered to SVG — never hand-drawn or GUI-generated diagrams
 - Short sentences, active voice
 - Every doc says where it is in its lifecycle
 - Status visible in frontmatter, never filename
+- All string constants defined as named namespace objects — never inline strings for protocol values (headers, config keys, status codes) — use `Container.KEY` pattern
 
 ## Design Principles
 

@@ -56,7 +56,7 @@ Begins after Milestone Confirmation sign-off. Answers "how" (product docs answer
 ### TDD — Technical Design Document
 
 - Written after Milestone Confirmation, before implementation. Lead engineer owns it
-- Template: Status (Draft/In Review/Approved/Superseded), Author, Reviewed by, Date, Linked to Milestone Confirmation, Overview, System context (diagram with new component highlighted), Approach (high-level + why over alternatives), Data model (tables/fields/schema changes, before/after), API design (endpoints, request/response), Component/service design (responsibilities, boundaries), Edge cases and failure modes, Performance considerations, Security considerations (auth, permissions, data sensitivity), Open questions
+- Template: Status (Draft/In Review/Approved/Superseded), Author, Reviewed by, Date, Linked to Milestone Confirmation, Overview, System context (d2lang diagram with new component highlighted), Approach (high-level + why over alternatives), Data model (tables/fields/schema changes, before/after), API design (endpoints, request/response), Component/service design (responsibilities, boundaries), Edge cases and failure modes, Performance considerations, Security considerations (auth, permissions, data sensitivity), Open questions
 
 ### ADR — Architecture Decision Record
 
@@ -165,6 +165,6 @@ Write tests BEFORE implementation (defines target; tests written after validate 
 ## Documentation Debt
 
 - Phase 1 (1-2 days): headers everywhere — Layer 1+2 for every existing feature
-- Phase 2 (1-2 weeks): flow diagrams for 20% of features causing 80% of questions/bugs
+- Phase 2 (1-2 weeks): d2lang flow diagrams for 20% of features causing 80% of questions/bugs
 - Phase 3 (ongoing): deep docs on demand — only when actively changing, new engineer confused, bug revealed unknown edge case
 - Never: document stable things nobody touches; dead docs mislead more than no docs

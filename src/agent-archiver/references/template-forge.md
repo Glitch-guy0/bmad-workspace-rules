@@ -357,7 +357,17 @@ downstream:
 
 **Overview:** [brief description]
 
-**System context:** [diagram or description with new component highlighted]
+**System context:** d2lang diagram with new component highlighted
+```d2
+system: System {
+  existing: Existing Component
+  new: New Component {
+    style.fill: "#e3f2fd"
+  }
+}
+user -> system: interacts
+system.new -> existing: integrates
+```
 
 **Approach:** [high-level + why over alternatives]
 

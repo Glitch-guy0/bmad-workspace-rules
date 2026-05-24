@@ -153,6 +153,39 @@ This section covers Project Constitution, Architecture Standards, and detailed C
 
 ## Cross-Cutting Standards
 
+### D2 Diagrams
+
+All architecture and flow diagrams must be authored as `.d2` files using the [D2](https://d2lang.com) declarative diagramming language and rendered to SVG.
+
+- **Source:** `.d2` file committed alongside the document
+- **Output:** SVG rendered via `d2` CLI, committed at the same path
+- **Embedding:** `![description](path/to/diagram.svg)` in markdown
+- **Syntax reference:** see `src/agent-archiver/references/d2-guide.md`
+- **When to diagram:** system context in TDDs, user flows in milestones, architecture comparisons in ADRs, entity relationships in ERDs
+
+### Constants Abstraction Pattern
+
+All protocol-level and domain string values must be defined as named namespace objects — never inlined as raw strings.
+
+**Pattern:**
+```typescript
+export const HeaderConstants = {
+  APIKEY: 'x-api-key',
+  TRACE_ID: 'x-trace-id',
+} as const;
+
+// Usage
+req.headers[HeaderConstants.APIKEY]
+```
+
+**Rules:**
+1. **Group by domain** — one file per domain (`header.constants.ts`, `error.constants.ts`, `config.constants.ts`)
+2. **Namespace object** — `export const DomainConstants = { KEY: 'value' } as const`
+3. **`as const`** — ensures literal types and autocomplete
+4. **Bracket access** — `obj[DomainConstants.KEY]` for dynamic keys
+5. **No inline protocol strings** — headers, status codes, config keys must be constants even if used once
+6. **Env wrapper** — access env vars via `EnvConstants`, not `process.env` directly
+
 ### Naming Conventions
 | Element | Convention | Example |
 |---------|------------|---------|
@@ -241,7 +274,9 @@ async function createUser(
 - DO: Follow existing patterns, Zod validation in controllers (not services), typed exceptions, async/await, strict TS, co-located tests
 - DO: Extract shared logic to `utils/` (backend) or `lib/` (frontend)
 - DO: Write TSDoc for every function (see TSDoc Conventions above)
-- DO NOT: Business logic in controllers, console.log in production, cross-imports between services, skip tests, commit secrets, use `.then()` chains, change AppResponse envelope format, add TODO/placeholder code, create one exception file per error type, commit any function without TSDoc
+- DO: Use D2 diagrams (`.d2` → SVG) for architecture and flow visualizations
+- DO: Define all protocol strings as namespace constant objects (`Container.KEY` pattern)
+- DO NOT: Business logic in controllers, console.log in production, cross-imports between services, skip tests, commit secrets, use `.then()` chains, change AppResponse envelope format, add TODO/placeholder code, create one exception file per error type, commit any function without TSDoc, hardcode protocol strings inline
 
 ### Utility Taxonomy
 - Start atomic, promote at ≥3 related functions; domain over generic; no business logic; max class size <150 lines
@@ -263,9 +298,9 @@ async function createUser(
 
 ### AI Agent Coding Rules
 - Before: read rules.md, read engineering docs, read neighboring files, check deferred-decisions.md
-- While: mirror module structure, use existing deps, use project abstractions, co-locate tests, add TSDoc to every function, no inline comments restating code
+- While: mirror module structure, use existing deps, use project abstractions, co-locate tests, add TSDoc to every function, no inline comments restating code, author diagrams as `.d2` files rendered to SVG, define protocol strings as namespace constants (`Container.KEY` pattern)
 - After: verify compilation (`tsc --noEmit`), verify tests pass, update docs, update story artifacts
-- Forbidden: console.log in production, sync I/O in handlers, business logic in controllers, per-error exception files, new state mgmt libs beyond RTK+TQ, `any` without justification, TODO placeholders, .env commits, any function without TSDoc
+- Forbidden: console.log in production, sync I/O in handlers, business logic in controllers, per-error exception files, new state mgmt libs beyond RTK+TQ, `any` without justification, TODO placeholders, .env commits, any function without TSDoc, hardcoded protocol strings, hand-drawn or GUI-generated diagrams
 
 ## Developer Experience
 - Local dev: Husky git hooks, Docker Compose for infrastructure, `cp .env.example .env`, `npx prisma generate`, `npx prisma migrate dev`, `npm run dev`
