@@ -166,10 +166,58 @@ This section covers Project Constitution, Architecture Standards, and detailed C
 - NEVER call real DBs, JWT, bcrypt, S3, or fs in tests
 - Coverage targets: service 90%+, routes 90%+, middleware 90%+, components 80%+
 
+### TSDoc Conventions
+
+Every function — exported or internal — **MUST** have a TSDoc comment. Types and interfaces **MUST** have one as well. No exceptions.
+
+**Format:**
+```typescript
+/**
+ * One-line summary of what this does. Use action verbs.
+ *
+ * @param paramName - Description of the parameter
+ * @returns Description of the return value
+ * @throws {ExceptionName} When/why this throws
+ */
+```
+
+**Rules:**
+- Lead with a verb in present tense (Creates, Validates, Fetches, Transforms)
+- `@param` — required for every parameter, describe what it represents
+- `@returns` — required when return type isn't trivially obvious from the name
+- `@throws` — required when the function throws a typed exception
+- `@typeParam` — for generic type parameters when needed
+- `@deprecated` — with reason + replacement path
+- `@example` — optional, add when usage is non-trivial
+- Do NOT restate what the type signature already says (`@param id - The id`)
+- Test files included — every test function gets a brief TSDoc describing what scenario it covers
+- Use `{@link OtherSymbol}` to cross-reference types and functions
+- Use Markdown inside descriptions for lists or emphasis
+
+**Frontend components:** Use a brief TSDoc above the component function describing what it renders and its props. Prop documentation via inline type is preferred over duplicating in `@param`.
+
+**Example:**
+```typescript
+/**
+ * Creates a new user record after validating the input payload.
+ *
+ * @param payload - Validated create-user DTO (guaranteed by controller)
+ * @param options.ip - Request IP for audit logging
+ * @returns The created user without the password hash
+ * @throws {AuthException} When email already exists
+ * @throws {ValidationException} When business rules fail
+ */
+async function createUser(
+  payload: CreateUserDto,
+  options: { ip: string }
+): Promise<UserResponse> { ... }
+```
+
 ### Code Quality Rules
 - DO: Follow existing patterns, Zod validation in controllers (not services), typed exceptions, async/await, strict TS, co-located tests
 - DO: Extract shared logic to `utils/` (backend) or `lib/` (frontend)
-- DO NOT: Business logic in controllers, console.log in production, cross-imports between services, skip tests, commit secrets, use `.then()` chains, change AppResponse envelope format, add TODO/placeholder code, create one exception file per error type
+- DO: Write TSDoc for every function (see TSDoc Conventions above)
+- DO NOT: Business logic in controllers, console.log in production, cross-imports between services, skip tests, commit secrets, use `.then()` chains, change AppResponse envelope format, add TODO/placeholder code, create one exception file per error type, commit any function without TSDoc
 
 ### Git Conventions
 - Branch: `<type>/<short-description>` — types: feat, fix, chore, refactor, docs
@@ -185,9 +233,9 @@ This section covers Project Constitution, Architecture Standards, and detailed C
 
 ### AI Agent Coding Rules
 - Before: read rules.md, read engineering docs, read neighboring files, check deferred-decisions.md
-- While: mirror module structure, use existing deps, use project abstractions, co-locate tests, no comments restating code
+- While: mirror module structure, use existing deps, use project abstractions, co-locate tests, add TSDoc to every function, no inline comments restating code
 - After: verify compilation (`tsc --noEmit`), verify tests pass, update docs, update story artifacts
-- Forbidden: console.log in production, sync I/O in handlers, business logic in controllers, per-error exception files, new state mgmt libs beyond RTK+TQ, `any` without justification, TODO placeholders, .env commits
+- Forbidden: console.log in production, sync I/O in handlers, business logic in controllers, per-error exception files, new state mgmt libs beyond RTK+TQ, `any` without justification, TODO placeholders, .env commits, any function without TSDoc
 
 ## Developer Experience
 - Local dev: Husky git hooks, Docker Compose for infrastructure, `cp .env.example .env`, `npx prisma generate`, `npx prisma migrate dev`, `npm run dev`
