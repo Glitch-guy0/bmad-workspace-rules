@@ -19,7 +19,7 @@ Current state: agents work but the documentation workflow has no formal orchestr
 - Handoffs are manual — knowing when to invoke which agent depends on tribal knowledge
 - Documentation debt compounds — stale indexes, broken cross-references, missing artifacts
 
-The goal: make documentation easier on the eyes for a single person managing the workflow.
+The goal: make documentation simpler to navigate and maintain for a single person managing the workflow.
 
 ## What Success Looks Like
 

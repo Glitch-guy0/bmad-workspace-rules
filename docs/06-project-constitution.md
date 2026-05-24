@@ -1,4 +1,4 @@
-This section covers Project Constitution, Architecture Standards, and detailed Coding Standards. Merged from consolidated-session-complete.md, research-complete.md, and tech-stack-coding-standards distillate.
+# Project Constitution
 
 ## Project Structure Philosophy
 - Feature-based modularization: group by domain, not technical role

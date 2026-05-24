@@ -1,4 +1,4 @@
-This section covers Architecture Decision Records.
+# Architecture Decision Records
 
 ## ADR 001 — Shared DTO Package
 - **Status**: Accepted. **Date**: 2026-05-19. **Decider**: Prajwal

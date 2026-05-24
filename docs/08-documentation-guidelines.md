@@ -1,7 +1,7 @@
-This section covers Documentation Guidelines — types of documentation, general guidelines, contribution docs philosophy, and research output map. Part 5 of 5 from documentation.md (59 lines).
+# Documentation Guidelines
 
 ## Two Types of Documentation
-- Product Brief (Features & Workflow): from user's perspective in the abstract; describes what the product does and how users interact with it
+- Product Brief (Features & Workflow): from the user's abstract perspective; describes what the product does and how users interact with it
 - Architecture Documentation: how code is written, infrastructure layout, service communication patterns, each service's functionality; data flow (DB architecture, storage, manipulation, transactions); connecting user stories to DB manipulation
 - Architecture docs also cover: infra structure, service communication and failure handling, coding philosophy
 

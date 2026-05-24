@@ -1,23 +1,13 @@
----
-type: bmad-distillate
-sources:
-  - "../final-plan.md"
-  - "../framework.md"
-  - "../_bmad-docs/brainstorming/consolidated-session-complete.md"
-  - "../_bmad-docs/research/research-complete.md"
-  - "../docs/decisions/adrs-complete.md"
-  - "../docs/engineering/engineering-complete.md"
-  - "../documentation.md"
-downstream_consumer: "project-planning"
-created: "2026-05-23"
-token_estimate: 13000
-parts: 10
-validation_status: "draft"
-verified_by: ""
-verified_date: ""
----
-
 # Project Plan — Source of Truth
+
+## About This Folder (`docs/`)
+
+This folder is the **source-of-truth documentation corpus** for the `agent-archiver` bmad-agent-module.
+
+- These 10 documents define the full product-development lifecycle framework (Q1-Q10), two-repo architecture, NFR/debt indexing, decision-making hierarchy, BMAD skill anatomy, coding constitution, ADRs, documentation guidelines, export structure, and project charter.
+- They serve as the specification and reference material from which the standalone `agent-archiver` module is built.
+- The `docs/` folder content is **compiled and exported** into the `src/agent-archiver/` module during the build process — becoming its embedded knowledge base (references, templates, scripts, and rules).
+- Every document here is a formal input to the Archiver agent's capabilities.
 
 > Validated content. Foundation for all forward planning and implementation.
 
