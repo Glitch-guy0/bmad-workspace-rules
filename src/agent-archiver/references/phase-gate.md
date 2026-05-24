@@ -87,6 +87,21 @@ If the transition involves an agent that Archiver doesn't see installed (check `
 
 > "This milestone is ready for Developer Agent work, but I don't see one in `.agents/skills/`. You'll need to install it or handle the dev planning manually."
 
+## Decision Guardrails for Phase Operations
+
+When a phase transition involves destructive or large-scale operations, apply these safety rules:
+
+| Condition | Action |
+|-----------|--------|
+| Project constitution missing | Refuse the operation — cannot proceed without governance rules |
+| More than N files to change (default: 10) | Refuse with recommendation to split into smaller transitions |
+| Destructive operation (move, delete, overwrite) | Require dry-run first — generate unified diff for review |
+| Brownfield project without project-context.md | Suggest generating project context first |
+| YOLO keyword provided | Skip Q&A but enforce file cap and log undo instructions in session log |
+| Pre-flight needed | Max 2 architecture questions, verify constitution path, check git context |
+
+For destructive operations: generate a dry-run plan showing exactly what will change, present it for approval, and include rollback instructions in the session log.
+
 ## Memory Integration
 Check MEMORY.md for the current state of the item being transitioned. Update the state after gating. Update BOND.md with any preferences the owner shows about how they like gates handled.
 

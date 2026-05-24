@@ -14,7 +14,7 @@
       "name": "wr",
       "source": "./",
       "description": "Documentation workflow orchestrator that manages the paper trail from idea to implementation report.",
-      "version": "1.0.0",
+      "version": "1.0.4",
       "author": {
         "name": ""
       },

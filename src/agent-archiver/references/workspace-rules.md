@@ -228,6 +228,43 @@ Decisions flow down; feedback flows up.
 - Spike Doc → ADR → TDD (Senior Dev→Implementation)
 - Filed at: `planning/[slug]/`
 
+## Three-Tier Organizational Flow
+
+Three roles, each with independent research domain and specific decision type.
+
+### VP Tier — Strategic
+Researches market sizing, competitive landscape, business model, strategic constraints. Decides strategic direction and priorities. Outputs: Strategic Directives.
+
+- Produces: Strategic Research Docs → SDRs → Strategic Directives
+- Research domain: Market & opportunity, Competitive landscape, Business model, Strategic constraints
+- File location: `strategy/`
+
+### PM Tier — Product
+Researches user behavior, product data, competitive features, scope options. Decides what goes into milestones. Outputs: Milestone Confirmations.
+
+- Produces: Product Research Docs → PDRs → Milestone docs → Milestone Confirmation (DTO 1)
+- Research domain: User understanding, Product analysis, Competitive detail, Scope decisions
+- File location: `milestones/active/[slug]/`
+
+### Senior Developer Tier — Technical
+Researches architecture options, algorithm trade-offs, technical constraints, system risks. Decides how the system is built. Outputs: Implementation Reports.
+
+- Produces: Spike Docs → ADRs → TDDs → Implementation Reports (DTO 2)
+- Research domain: Architecture exploration, Algorithm evaluation, Risk investigation, Constraint analysis
+- File location: `planning/[slug]/`
+
+### Feedback Loops
+
+- Senior Dev → PM: Implementation Reports, NFR Proposals, Tech Debt notifications, ADRs
+- PM → VP: Milestone outcomes, User response post-ship, Escalations (technical constraints hitting strategy), Revised scope signals
+- VP → PM (reactive): Strategic re-prioritization, New constraints
+
+### Three Handoff Documents
+
+- VP → PM: Strategic Directive (bet, target segment, success definition, hard constraints, open questions)
+- PM → Senior Dev: Milestone Confirmation File (DTO 1)
+- Senior Dev → PM: Implementation Report (DTO 2)
+
 ## File Indexing System
 
 ### Four-Layer Model
@@ -268,6 +305,27 @@ Body: Milestone slug, Slice number, Combined with, Ahead planning, What this sli
 - Phase 3 (ongoing): deep docs on demand — only when actively changing, new engineer confused, bug revealed unknown edge case
 - Never: document stable things nobody touches; dead docs mislead more than no docs
 
+## Editorial Pipeline Automation
+
+Chain for processing documentation content:
+
+1. **Prose review** — auto after braindump or bulk edit (invoke `bmad-editorial-review-prose`)
+2. **Structure review** — auto after prose pass (invoke `bmad-editorial-review-structure`)
+3. **Shard** — conditional: only if document exceeds 500 lines (invoke `bmad-shard-doc`)
+4. **Index** — auto per folder after content change (invoke `bmad-index-docs`)
+5. **Distill** — optional: brainstorming or compression only (invoke `bmad-distillator`)
+
+### Helper-vs-Writer Dispatcher
+
+| Content Type | Pipeline |
+|-------------|----------|
+| Unstructured notes | Helper chain |
+| Compress brainstorm | Helper (distillator) |
+| New API/module tech doc | Writer |
+| Unknown brownfield | Writer (generate-project-context) |
+| Post-implementation | Workspace rules |
+| Architecture deviation | ADR |
+
 ## Phase Transition Prerequisites
 
 | From | To | Prerequisites |
@@ -282,6 +340,18 @@ Body: Milestone slug, Slice number, Combined with, Ahead planning, What this sli
 | Report | Update | Report generated, decisions logged |
 | Update | Complete | Product docs updated, milestone archived |
 
+## Decision Guardrails
+
+Safety rules for destructive or large-scale operations:
+
+- Constitution missing → refuse the operation
+- More than N files to change → refuse with recommendation to split the change
+- Destructive operation → dry-run first (generate unified diff for review)
+- Brownfield without project-context.md → suggest generating project context first
+- YOLO keyword → skip Q&A but enforce file cap and log undo instructions
+- Pre-flight: max 2 architecture questions, verify constitution path, check git context
+- Dry-run output: unified diff + undo block in session log (git checkout + rm commands)
+
 ## Format Rules
 
 - Lead with status and ownership
@@ -290,3 +360,10 @@ Body: Milestone slug, Slice number, Combined with, Ahead planning, What this sli
 - Short sentences, active voice
 - Every doc says where it is in its lifecycle
 - Status visible in frontmatter, never filename
+
+## Design Principles
+
+- **Outcome-driven** — every capability describes WHAT to achieve, not HOW
+- **Progressive disclosure** — info available at the right depth when needed
+- **Single-person, org-ready** — one operator produces org-grade documentation
+- **Autonomous where it counts** — boring maintenance happens without asking

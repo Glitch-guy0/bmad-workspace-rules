@@ -33,28 +33,36 @@ For each discovered agent, track:
 
 | Situation | Recommendation |
 |-----------|---------------|
-| Q1 idea ready for validation | "Ready for Product Agent to explore validity." |
-| Q3 milestone structured, needs stress test | "Requirements have AC — invoke the Product Agent for stress testing." |
-| Q5 milestone signed off, needs dev work | "DTO 1 dispatched — invoke the Developer Agent for technical design." |
-| Q6 dev planning complete, needs Gate 2 review | "TDD and ADRs ready — technical design review needed." |
-| Q8 implementation planning complete | "Vertical slices planned — Developer Agent can begin implementation." |
-| Q10 implementation done, needs report | "Ask the Developer Agent to generate the Implementation Report." |
-| Report received, needs product doc update | "The report is in — invoke the Product Agent to update docs." |
+| Q1 idea ready for validation | "Ready for Product Agent (PM tier) to explore validity." |
+| Q3 milestone structured, needs stress test | "Requirements have AC — invoke the Product Agent (PM tier) for stress testing." |
+| Q5 milestone signed off, needs dev work | "DTO 1 dispatched — invoke the Developer Agent (Senior Dev tier) for technical design." |
+| Q6 dev planning complete, needs Gate 2 review | "TDD and ADRs ready — technical design review needed (Senior Dev tier)." |
+| Q8 implementation planning complete | "Vertical slices planned — Developer Agent (Senior Dev tier) can begin implementation." |
+| Q10 implementation done, needs report | "Ask the Developer Agent (Senior Dev tier) to generate the Implementation Report." |
+| Report received, needs product doc update | "The report is in — invoke the Product Agent (PM tier) to update docs." |
 
 ### By Decision Record Type
 
+| Situation | Tier | Recommendation |
+|-----------|------|---------------|
+| Strategic question (market, competition, business model) | VP | "This needs an SDR — strategic level. File in `strategy/sdrs/`." |
+| Product question (user behavior, scope, features) | PM | "This needs a PDR — product level. File in `milestones/active/[slug]/pdrs/`." |
+| Technical question (architecture, trade-offs, constraints) | Senior Dev | "This needs an ADR — technical level. File in `planning/[slug]/adrs/`." |
+
+### By Three-Tier Handoff
+
 | Situation | Recommendation |
 |-----------|---------------|
-| Strategic question (market, competition) | "This needs an SDR — strategic level." |
-| Product question (user behavior, scope) | "This needs a PDR — product level." |
-| Technical question (architecture, trade-offs) | "This needs an ADR — technical level." |
+| VP needs to communicate strategic direction | "Draft a Strategic Directive — feeds from the SDR, targets PM milestone work." |
+| Milestone ready for engineering | "DTO 1 (Milestone Confirmation) ready — hand off to Senior Dev tier." |
+| Implementation complete, needs product update | "DTO 2 (Implementation Report) ready — hand back to PM tier for doc updates." |
 
 ### By NFR / Tech Debt
 
 | Situation | Recommendation |
 |-----------|---------------|
-| NFR proposed → needs review | "NFR proposal ready for PM review." |
-| Tech debt accepted → needs ADR | "Tech debt accepted — file an ADR documenting the trade-off." |
+| NFR proposed → needs review | "NFR proposal ready for PM (PM tier) review." |
+| Tech debt accepted → needs ADR | "Tech debt accepted — file an ADR (Senior Dev tier) documenting the trade-off." |
 
 ## Registration Format for Config
 
